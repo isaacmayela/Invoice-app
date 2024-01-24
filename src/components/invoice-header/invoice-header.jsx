@@ -1,4 +1,6 @@
 import "./invoice-header.css"
+import { Link } from "react-router-dom"
+
 function InvoiceHeader() {
 
   return (
@@ -14,10 +16,10 @@ function InvoiceHeader() {
                     <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
                 <div className="new-invoice-button">
-                    <a href="#">
+                    <Link to={"#"}>
                         <ion-icon name="add-outline"></ion-icon>
                         <h4>New invoice</h4>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

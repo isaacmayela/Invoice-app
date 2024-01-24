@@ -20,13 +20,21 @@ body {
 
 .sidebar-menu{
   grid-column: 1 / 9;
-  background-color: #1e213b;
-  border-radius: 0 20px 20px 0;
   overflow: hidden;
+  position: relative;
+}
+
+.menu{
+  height: 100%;
+  border-radius: 0 20px 20px 0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   padding-bottom: 2em;
+  background-color: #1e213b;
+  position: fixed;
+  width: 123px;
+  overflow: hidden;
 }
 
 .container-logo{
@@ -89,7 +97,8 @@ body {
 }
 
 .container{
-  width: 800px;
-  padding-top: 3em;
+  width: 850px;
+  position: relative;
+  padding-bottom: 1em;
 }
 

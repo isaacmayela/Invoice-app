@@ -7,18 +7,20 @@ function Layout() {
     <>
         <div className="main-container">
             <div className='sidebar-menu'>
-                <div className="container-logo">
-                    <div className="banner"></div>
-                    <div className="logo">
+                <div className="menu">
+                    <div className="container-logo">
+                        <div className="banner"></div>
+                        <div className="logo">
+                        </div>
                     </div>
-                </div>
-                <div className="profile-container">
-                    <div className="mode">
-                        <a href='#' className="icon"><ion-icon name="sunny"></ion-icon></a>
-                       {/* <a href="#" className='icon'><ion-icon name="moon" className="icon"></ion-icon></a> */}
-                    </div>
+                    <div className="profile-container">
+                        <div className="mode">
+                            <a href='#' className="icon"><ion-icon name="sunny"></ion-icon></a>
+                        {/* <a href="#" className='icon'><ion-icon name="moon" className="icon"></ion-icon></a> */}
+                        </div>
 
-                    <img src={userLogo} alt="user logo" />
+                        <img src={userLogo} alt="user logo" />
+                    </div>
                 </div>
             </div>
             <div className="elements-container">
