@@ -1,0 +1,32 @@
+.detail-container{
+    background-color: #1e213b;
+    padding: 2em;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.detail-container p{
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.detail-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.client-adress{
+    text-align: right;
+}
+
+.client-detail{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.client-detail > div{
+    margin-bottom: 1.5em;
+}
+
+.bill-infos{
+    padding-top: 1.5em;
+}

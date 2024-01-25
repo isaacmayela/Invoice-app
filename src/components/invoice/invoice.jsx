@@ -15,7 +15,7 @@ function Invoice() {
                             <div className="badge-point"></div>
                             <h5>Pending</h5>
                         </div>
-                        <Link to={'/invoice/id'}>
+                        <Link to={'/invoice/:id'}>
                             <i class="fa-solid fa-chevron-right"></i>
                         </Link>
                     </li>
