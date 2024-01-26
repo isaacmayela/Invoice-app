@@ -11,6 +11,20 @@ body {
   background-color: #141625;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e213b; 
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: lightgray;
+  border-radius: 6px;
+}
+
 .main-container{
   display: grid;
   grid-template-columns: repeat(100, 1fr);
