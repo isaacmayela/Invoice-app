@@ -6,6 +6,9 @@ import InvoiceDetail from './pages/invoice-detail/invoice-detail'
 
 function App() {
 
+  // expression regulière pour valider un email :
+  // /(.+)@(.+){2,}\.(.+){2,}/.test("adresse@gmail.com")
+
   return (
     <>
       <Router>

@@ -1,7 +1,14 @@
 import "./invoice-actions.css"
-import ActionButton from "../action-button/action-button"
+import { useContext } from "react"
+import FormContext from "../../contexts/displayFormContext"
 
 function InvoiceActions() {
+
+    const { isEditForm, setIsEditForm } = useContext(FormContext)
+
+    const handleDisplayEditForm = () =>{
+        setIsEditForm(true)
+    }
 
     return (
       <>
@@ -15,9 +22,9 @@ function InvoiceActions() {
                     </div>
                 </div>
                 <div className="button-actions">
-                    <ActionButton text={"Edit"} style={"btn-white"}/>
-                    <ActionButton text={"Delete"} style={"btn-red"}/>
-                    <ActionButton text={"Mark as Paid"} style={"btn-violet"}/>
+                    <button className="btn-white" onClick={handleDisplayEditForm}>Edit</button>
+                    <button className="btn-red">Delete</button>
+                    <button className="btn-violet">Mark as Paid</button>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ function Invoice() {
                             <h5>Pending</h5>
                         </div>
                         <Link to={'/invoice/:id'}>
-                            <i class="fa-solid fa-chevron-right"></i>
+                            <i className="fa-solid fa-chevron-right"></i>
                         </Link>
                     </li>
                 </ul>

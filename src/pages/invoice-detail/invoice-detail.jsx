@@ -9,7 +9,7 @@ function InvoiceDetail() {
     <>
       <div className="detail-header">
         <Link to={"/home"}>
-          <i class="fa-solid fa-chevron-left"></i>
+          <i className="fa-solid fa-chevron-left"></i>
           <h4>Go back</h4>
         </Link>
       </div>
