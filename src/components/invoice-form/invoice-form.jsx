@@ -1,19 +1,39 @@
 import "./invoice-form.css"
 import "../invoice-actions/invoice-actions.css"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import FormContext from "../../contexts/displayFormContext"
 
 function InvoiceForm() {
 
     const { formState, setFormState } = useContext(FormContext);
 
+    const [inputGroups, setInputGroups] = useState([
+        { id: 1, input1: '', input2: '', input3: '' }
+    ]);
+
     const handleHideForm = () =>{
         setFormState(false)
     }
 
-    const handleDuplicateForm = () =>{
-        
-    }
+    const addInputGroup = () => {
+        const newId = inputGroups.length > 0 ? inputGroups[inputGroups.length - 1].id + 1 : 1;
+        setInputGroups([...inputGroups, { id: newId, input1: '', input2: '', input3: '' }]);
+    };
+    
+    const removeInputGroup = (id) => {
+        setInputGroups(inputGroups.filter(group => group.id !== id));
+    };
+    
+    const updateInput = (id, key, value) => {
+        const newInputGroups = inputGroups.map(group => {
+          if (group.id === id) {
+            return { ...group, [key]: value };
+          }
+          return group;
+        });
+        setInputGroups(newInputGroups);
+    };
+
 
     return (
         <>
@@ -100,45 +120,49 @@ function InvoiceForm() {
                         <label htmlFor="#" className="item-three">Price</label>
                         <label htmlFor="#" className="item-four">Total</label>
                     </div>
-                    <div className="item">
-                        <div className="item-one">
-                            <input type="text" name="street" id="street"/>
-                        </div>
-                        <div className="item-two">
-                            <input type="text" name="street" id="street"/>
-                        </div>
-                        <div className="item-three">
-                            <input type="text" name="street" id="street"/>
-                        </div>
-                        <div className="item-four">
-                            <input type="text" name="street" id="street"/>
-                        </div>
-                        <div className="item-five trash">
-                            <i class="fa-solid fa-trash"></i>
-                        </div>
-                    </div>
 
-                    <div className="item">
-                        <div className="item-one">
-                            <input type="text" name="street" id="street"/>
-                        </div>
-                        <div className="item-two">
-                            <input type="text" name="street" id="street"/>
-                        </div>
-                        <div className="item-three">
-                            <input type="text" name="street" id="street"/>
-                        </div>
-                        <div className="item-four">
-                            <input type="text" name="street" id="street"/>
-                        </div>
-                        <div className="item-five trash">
-                            <i class="fa-solid fa-trash"></i>
-                        </div>
-                    </div>
+                    {
+                        inputGroups.map(group =>(
+                            <div className="item" key={group.id}>
+                                <div className="item-one">
+                                    <input
+                                        type="text"
+                                        value={group.input1}
+                                        onChange={(e) => updateInput(group.id, 'input1', e.target.value)}
+                                    />
+                                </div>
+                                <div className="item-two">
+                                    <input
+                                        type="text"
+                                        value={group.input2}
+                                        onChange={(e) => updateInput(group.id, 'input2', e.target.value)}
+                                    />
+                                </div>
+                                <div className="item-three">
+                                    <input
+                                        type="text"
+                                        value={group.input3}
+                                        onChange={(e) => updateInput(group.id, 'input3', e.target.value)}
+                                    />
+                                </div>
+                                <div className="item-four">
+                                    <input
+                                        type="text"
+                                        value={group.input3}
+                                        onChange={(e) => updateInput(group.id, 'input4', e.target.value)}
+                                    />
+                                </div>
+                                <div className="item-five trash">
+                                    <i class="fa-solid fa-trash" onClick={() => removeInputGroup(group.id)}></i>
+                                </div>
+                            </div>
+                        ))
+                    }
+
                 </div>
 
                 <div className="form-actions">
-                    <button className="btn-blue" onClick={handleDuplicateForm}><i className="fa-solid fa-plus"></i> Add New Item</button>
+                    <button className="btn-blue"onClick={addInputGroup}><i className="fa-solid fa-plus"></i> Add New Item</button>
                     <div className="save-container">
                         <button className="btn-white" onClick={handleHideForm}>Cancel</button>
                         <button className="btn-violet" type="submit">Save Changes</button>
