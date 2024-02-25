@@ -102,12 +102,12 @@ function InvoiceForm() {
                             <input type="date" name="street" id="street"/>
                         </div>
                         <div>
-                            <label htmlFor="street">Post Code</label>
+                            <label htmlFor="street">Payments Terms</label>
                             <input type="text" name="street" id="street"/>
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="street">Client's Name</label>
+                        <label htmlFor="street">Project's Description</label>
                         <input type="text" name="street" id="street"/>
                     </div>
                 </div>
