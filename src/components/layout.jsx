@@ -68,7 +68,7 @@ function Layout() {
                     </div> */}
                 </div>
                 <FormContext.Provider value={{ formState, setFormState, isEditForm, setIsEditForm }} >
-                    <div className="elements-container pb-[300px]">
+                    <div className="elements-container pb-[20px]">
 
                         <div className='bg-[#1e213b] border-b-[3px] border-solid border-[#383b54] h-[70px] flex items-center justify-between pr-[2.5em]'>
                             <div></div>

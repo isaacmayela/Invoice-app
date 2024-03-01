@@ -5,6 +5,7 @@ import Home from './pages/home/home'
 import InvoiceDetail from './pages/invoice-detail/invoice-detail'
 import Login from './pages/login/login'
 import Register from './pages/register/regster'
+import Company from './pages/company/company'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Register />} />
           <Route path="/" element={<Layout />}>
             <Route path='/home' element={<Home/>} />
+            <Route path='/company' element={<Company/>} />
             <Route path='/invoice/:id' element={<InvoiceDetail/>}/>
           </Route>
         </Routes>
