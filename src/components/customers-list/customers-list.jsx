@@ -1,20 +1,19 @@
-import "./invoices-list.css"
-import Invoice from "../invoice/invoice"
+import Customer from "./customer/customer"
 import ItemHeader from "../items-header/items-header"
 
-function InvoicesList({companyName, itemsNumber, itemsName}) {
+function CustomersList({companyName, itemsName, itemsNumber}) {
 
     const list = [1,2,3,4,5,6,7,8,9,10]
 
     return (
         <>
 
-            <ItemHeader companyName={companyName} itemsName={itemsName} itemsNumber={itemsNumber} />
+            <ItemHeader companyName={companyName} itemsNumber={itemsNumber} itemsName={itemsName}/>
 
             <div className="flex flex-col gap-[1em] px-[1em]">
                 {
                     list.map((invoiceInfos, index) =>(
-                        <Invoice key={index} />
+                        <Customer key={index} />
                     ))
                 }
                 <div className="text-[#fff] flex justify-end items-center gap-[1em]">
@@ -31,4 +30,4 @@ function InvoicesList({companyName, itemsNumber, itemsName}) {
     )
 }
 
-export default InvoicesList
+export default CustomersList

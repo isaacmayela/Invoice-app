@@ -5,7 +5,7 @@ import { useContext } from "react"
 import FormContext from "../../contexts/displayFormContext"
 
 
-function InvoiceHeader() {
+function ItemHeader({companyName, itemsNumber, itemsName}) {
     const { formState, setFormState } = useContext(FormContext);
 
     const handleDisplayForm = () =>{
@@ -16,8 +16,8 @@ function InvoiceHeader() {
         <>
             <div className="text-[#fff] flex items-center justify-between py-[3em] px-[1em]">
                 <div className="invoices-titles">
-                    <h1>Factures</h1>
-                    <p>Kadea possède 10 factures</p>
+                    <h1>{itemsName}</h1>
+                    <p>{companyName} possède {itemsNumber} {itemsName}</p>
                 </div>
                 <div className="new-invoice">
                     <div className="filter">
@@ -37,4 +37,4 @@ function InvoiceHeader() {
     )
 }
 
-export default InvoiceHeader
+export default ItemHeader

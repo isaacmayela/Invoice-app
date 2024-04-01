@@ -58,13 +58,14 @@ body {
 .main-container{
   display: grid;
   grid-template-columns: repeat(100, 1fr);
-  height: 100vh;
+  height: 100%;
 }
 
 .sidebar-menu{
   grid-column: 1 / 18;
   overflow: hidden;
   position: relative;
+  height: 100%;
   /* en travail */
 
   background-color: #1e213b;
@@ -139,6 +140,7 @@ body {
 
 .elements-container{
   grid-column: 18 / 101;
+  height: 100%;
 }
 
 .popup-form-container{
