@@ -4,6 +4,7 @@ import chart from "../../assets/dallee.webp"
 import imLogog from "../../assets/im-logo2.png"
 import userIcon from "../../assets/user-icon.webp"
 import googleLogo from "../../assets/google-logo.png"
+import tabletLogin from "../../assets/Tablet login-bro.png"
 
 
 function Login() {
@@ -45,7 +46,7 @@ function Login() {
                             <div className='mt-[3em] flex items-center justify-center gap-10'>
                                 <i class="fa-brands fa-facebook-f text-[#fff] text-3xl"></i>
                                 <i class="fab fa-whatsapp text-[#fff] text-3xl"></i>
-                                <i class="fa-brands fa-youtube text-[#fff] text-3xl"></i>
+                                <i class="fa-brands fa-youtube text-[#fff] text-3xl"></i>rgb(123,93,249)
                             </div>
                         </form>
                     </div>
@@ -54,78 +55,84 @@ function Login() {
             </div> */}
 
             <div className='h-screen flex items-center justify-center gradient overflow-hidden'>
-                <div className="flex flex-col bg-[#1e213b] shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
-                    <div className="font-medium self-center text-xl sm:text-2xl uppercase text-[#e8e9f0]">CONNECTER-VOUS</div>
-                    <button className="relative mt-6 border border-[#777a8f] rounded-md py-2 text-sm text-[#e8e9f0] bg-[#35395c] hover:bg-[#2a2e4c]">
-                        <span className="absolute left-0 top-0 flex items-center justify-center h-full w-10">
-                            <img src={googleLogo} alt="google logo" className='w-[1.5em]'/>
-                        </span>
-                        <span>Connexion avec Google</span>
-                    </button>
-                    <div className="relative mt-10 h-px bg-gray-300">
-                        <div className="absolute left-0 top-0 flex justify-center w-full -mt-2">
-                            <span className="bg-[#1e213b] px-4 text-xs text-[#b4b7cd] uppercase">Ou avec adrèsse Email</span>
+                <div className='max-w-screen-xl m-0 sm:m-10 bg-[#1e213b] shadow sm:rounded-lg flex justify-center flex-1 overflow-hidden'>
+                    <div className='lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex items-center'>
+                        <div className="mt-12 flex flex-col items-center">
+                            <div className='flex items-center py-4 px-2 gap-[1em]'>
+                                <img src={ imLogog } alt="invoice manager logo" className='w-14 h-14 bg-[black] rounded-full'/>
+                                <div className='font-bold text-[0.9em] text-[#fff] leading-[1em]'>
+                                    <h1>INVOICE</h1>
+                                    <h1>MANAGER</h1>
+                                </div>
+                            </div>
+                            <div className="w-full flex-1 mt-8">
+                                <div className="flex flex-col items-center">
+                                    <button
+                                        className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-[rgba(123,93,249,0.5)] text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+                                        <div className="bg-[#1e213b] p-2 rounded-full">
+                                            <svg className="w-4" viewBox="0 0 533.5 544.3">
+                                                <path
+                                                    d="M533.5 278.4c0-18.5-1.5-37.1-4.7-55.3H272.1v104.8h147c-6.1 33.8-25.7 63.7-54.4 82.7v68h87.7c51.5-47.4 81.1-117.4 81.1-200.2z"
+                                                    fill="#4285f4" />
+                                                <path
+                                                    d="M272.1 544.3c73.4 0 135.3-24.1 180.4-65.7l-87.7-68c-24.4 16.6-55.9 26-92.6 26-71 0-131.2-47.9-152.8-112.3H28.9v70.1c46.2 91.9 140.3 149.9 243.2 149.9z"
+                                                    fill="#34a853" />
+                                                <path
+                                                    d="M119.3 324.3c-11.4-33.8-11.4-70.4 0-104.2V150H28.9c-38.6 76.9-38.6 167.5 0 244.4l90.4-70.1z"
+                                                    fill="#fbbc04" />
+                                                <path
+                                                    d="M272.1 107.7c38.8-.6 76.3 14 104.4 40.8l77.7-77.7C405 24.6 339.7-.8 272.1 0 169.2 0 75.1 58 28.9 150l90.4 70.1c21.5-64.5 81.8-112.4 152.8-112.4z"
+                                                    fill="#ea4335" />
+                                            </svg>
+                                        </div>
+                                        <span className="ml-4 text-gray-100">
+                                            Sign In with Google
+                                        </span>
+                                    </button>
+
+                                </div>
+
+                                <div className="my-12 border-b text-center">
+                                    <div
+                                        class="leading-none px-2 inline-block text-sm text-gray-100 tracking-wide font-medium bg-[#1e213b] transform translate-y-1/2">
+                                        Or sign In with Cartesian E-mail
+                                    </div>
+                                </div>
+
+                                <div className="mx-auto max-w-xs">
+                                    <input
+                                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                        type="email" placeholder="Email" />
+                                    <input
+                                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                        type="password" placeholder="Password" />
+                                    <button
+                                        className="mt-5 tracking-wide font-semibold bg-[rgba(123,93,249,0.8)] text-white-500 w-full py-4 rounded-lg hover:bg-[rgba(123,93,249,0.6)] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                        <svg className="w-6 h-6 -ml-2" fill="none" stroke="rgb(249 250 251)" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                            <circle cx="8.5" cy="7" r="4" />
+                                            <path d="M20 8v6M23 11h-6" />
+                                        </svg>
+                                        <span class="ml- text-gray-100">
+                                            Sign In
+                                        </span>
+                                    </button>
+                                    <div className='text-center text-[rgba(123,93,249,0.8)] mt-[1em] text-[0.9em] font-semibold'>
+                                        <Link className='hover:underline'>
+                                            Vous n'avez pas de compte ?
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="mt-10">
-                        <form action="#">
-                            <div className="flex flex-col mb-6">
-                            <label for="email" className="mb-1 text-xs sm:text-sm tracking-wide text-[#b4b7cd]">E-Mail Address:</label>
-                            <div className="relative">
-                                <div className="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                                <svg className="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                                </svg>
-                                </div>
-
-                                <input id="email" type="email" name="email" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400 bg-[#1e213b]" placeholder="E-Mail Address" />
-                            </div>
-                            </div>
-                            <div className="flex flex-col mb-6">
-                            <label for="password" className="mb-1 text-xs sm:text-sm tracking-wide text-[#b4b7cd]">Password:</label>
-                            <div className="relative">
-                                <div class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-gray-400">
-                                <span>
-                                    <svg className="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                    </svg>
-                                </span>
-                                </div>
-
-                                <input id="password" type="password" name="password" className="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400 bg-[#1e213b]" placeholder="Password" />
-                            </div>
-                            </div>
-
-                            <div class="flex items-center mb-6 -mt-4">
-                            <div class="flex ml-auto">
-                                <a href="#" className="inline-flex text-xs sm:text-sm text-[#7b5df9] hover:text-[#6f53de]">Mot de passe oublié ?</a>
-                            </div>
-                            </div>
-
-                            <div class="flex w-full">
-                            <button type="submit" className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-[#7b5df9] hover:bg-[#6f53de] rounded py-2 w-full transition duration-150 ease-in" onClick={handleNavigate}>
-                                <span class="mr-2 uppercase">Login</span>
-                                <span>
-                                <svg className="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                </span>
-                            </button>
-                            </div>
-                        </form>
+                    <div className='flex-1 bg-[rgba(123,93,249,0.5)] justify-center items-center text-center hidden lg:flex'>
+                        <img src={tabletLogin} alt="tablet pana" className='w-[27em] h-[24em] px-[1em]'/>
                     </div>
-                    <div class="flex justify-center items-center mt-6">
-                    <a href="#" target="_blank" className="inline-flex items-center font-bold text-[#7b5df9] hover:text-[#6f53de] text-xs text-center">
-                        <span>
-                        <svg className="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                        </svg>
-                        </span>
-                        <span className="ml-2">Vous n'avez pas de compte ?</span>
-                    </a>
                 </div>
             </div>
-            </div>
+            
         </>
     )
 }
