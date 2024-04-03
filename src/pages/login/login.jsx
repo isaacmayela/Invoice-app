@@ -57,7 +57,7 @@ function Login() {
             <div className='h-screen flex items-center justify-center gradient overflow-hidden'>
                 <div className='max-w-screen-xl m-0 sm:m-10 bg-[#1e213b] shadow sm:rounded-lg flex justify-center flex-1 overflow-hidden'>
                     <div className='lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex items-center'>
-                        <div className="mt-12 flex flex-col items-center">
+                        <div className="mt-5 flex flex-col items-center">
                             <div className='flex items-center py-4 px-2 gap-[1em]'>
                                 <img src={ imLogog } alt="invoice manager logo" className='w-14 h-14 bg-[black] rounded-full'/>
                                 <div className='font-bold text-[0.9em] text-[#fff] leading-[1em]'>
