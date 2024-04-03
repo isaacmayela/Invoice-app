@@ -4,7 +4,9 @@ import chart from "../../assets/dallee.webp"
 import imLogog from "../../assets/im-logo2.png"
 import userIcon from "../../assets/user-icon.webp"
 import googleLogo from "../../assets/google-logo.png"
-import tabletLogin from "../../assets/Tablet login-bro.png"
+import tabletLogin from "../../assets/Tabletlogin-bro.png"
+import GoogleIcon from '../../icon/GoogleIcon';
+import UserplusIcon from '../../icon/UserplusIcon';
 
 
 function Login() {
@@ -54,7 +56,7 @@ function Login() {
                 </div>
             </div> */}
 
-            <div className='h-screen flex items-center justify-center gradient overflow-hidden'>
+            {/* <div className='h-screen flex items-center justify-center gradient overflow-hidden'>
                 <div className='max-w-screen-xl m-0 sm:m-10 bg-[#1e213b] shadow sm:rounded-lg flex justify-center flex-1 overflow-hidden'>
                     <div className='lg:w-1/2 xl:w-5/12 p-6 sm:p-12 flex items-center'>
                         <div className="mt-5 flex flex-col items-center">
@@ -129,6 +131,71 @@ function Login() {
                     </div>
                     <div className='flex-1 bg-[rgba(123,93,249,0.5)] justify-center items-center text-center hidden lg:flex'>
                         <img src={tabletLogin} alt="tablet pana" className='w-[27em] h-[24em] px-[1em]'/>
+                    </div>
+                </div>
+            </div> */}
+
+
+            <div className="min-h-screen text-gray-900 flex justify-center">
+                <div className="max-w-screen-xl m-0 sm:m-10 bg-[#1e213b] shadow sm:rounded-lg flex justify-center flex-1 overflow-hidden">
+                    <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+                        <div>
+                            <img src="https://drive.google.com/uc?export=view&id=1MFiKAExRFF0-2YNpAZzIu1Sh52J8r16v"
+                                className="w-mx-auto" />
+                        </div>
+                        <div className="mt-12 flex flex-col items-center">
+                            <div className="w-full flex-1 mt-8">
+                                <div className="flex flex-col items-center">
+                                    <button
+                                        className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-[rgba(123,93,249,0.5)] text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
+                                        <div className="bg-[#1e213b] p-2 rounded-full">
+                                            <GoogleIcon/>
+                                        </div>
+                                        <span className="ml-4">
+                                            Sign In with Google
+                                        </span>
+                                    </button>
+            
+                                </div>
+            
+                                <div className="my-12 border-b text-center">
+                                    <div
+                                        className="leading-none px-2 inline-block text-sm text-gray-100 tracking-wide font-medium bg-[#1e213b] transform translate-y-1/2">
+                                        Or sign In with Cartesian E-mail
+                                    </div>
+                                </div>
+            
+                                <div className="mx-auto max-w-xs">
+                                    <input
+                                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                        type="email" placeholder="Email" />
+                                    <input
+                                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                        type="password" placeholder="Password" />
+                                    <button
+                                        class="mt-5 tracking-wide font-semibold bg-[rgba(123,93,249,0.8)] text-white-500 w-full py-4 rounded-lg hover:bg-[rgba(123,93,249,0.6)] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                        <UserplusIcon/>
+                                        <span class="ml-">
+                                            Sign In
+                                        </span>
+                                    </button>
+                                    <p className="mt-6 text-xs text-gray-600 text-center">
+                                        I agree to abide by Cartesian Kinetics
+                                        <a href="#" class="border-b border-gray-500 border-dotted">
+                                            Terms of Service
+                                        </a>
+                                        and its
+                                        <a href="#" class="border-b border-gray-500 border-dotted">
+                                            Privacy Policy
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex-1 bg-[rgba(123,93,249,0.5)] text-center hidden lg:flex">
+                        <div className={`m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat bg-[url("src/assets/Tabletlogin-bro.png")]`}>
+                        </div>
                     </div>
                 </div>
             </div>
