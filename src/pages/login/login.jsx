@@ -154,8 +154,8 @@ function Login() {
                                         <div className="bg-[#1e213b] p-2 rounded-full">
                                             <GoogleIcon/>
                                         </div>
-                                        <span className="ml-4">
-                                            Sign In with Google
+                                        <span className="ml-4 text-gray-100">
+                                            Connexion avec Google
                                         </span>
                                     </button>
             
@@ -164,34 +164,34 @@ function Login() {
                                 <div className="my-12 border-b text-center">
                                     <div
                                         className="leading-none px-2 inline-block text-sm text-gray-100 tracking-wide font-medium bg-[#1e213b] transform translate-y-1/2">
-                                        Or sign In with Cartesian E-mail
+                                        Ou avec votre adrèsse E-mail
                                     </div>
                                 </div>
             
                                 <div className="mx-auto max-w-xs">
                                     <input
-                                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                        className="w-full px-8 py-4 rounded-lg font-medium bg-[#1e213b] border border-[rgb(33, 36, 57)] placeholder-gray-300 text-sm focus:outline-none focus:border-[#7b5df9] text-gray-300"
                                         type="email" placeholder="Email" />
                                     <input
-                                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                        className="w-full px-8 py-4 rounded-lg font-medium bg-[#1e213b] border border-[rgb(33, 36, 57)] placeholder-gray-300 text-sm focus:outline-none focus:border-[#7b5df9] text-gray-300 mt-5"
                                         type="password" placeholder="Password" />
+                                    <div className='flex justify-end text-[rgba(123,93,249,0.8)] mt-[1em] text-[0.9em] font-semibold'>
+                                        <Link className='hover:underline'>
+                                            Mot de passe oublié ?
+                                        </Link>
+                                    </div>
                                     <button
                                         class="mt-5 tracking-wide font-semibold bg-[rgba(123,93,249,0.8)] text-white-500 w-full py-4 rounded-lg hover:bg-[rgba(123,93,249,0.6)] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                         <UserplusIcon/>
-                                        <span class="ml-">
+                                        <span class="ml- text-gray-100">
                                             Sign In
                                         </span>
                                     </button>
-                                    <p className="mt-6 text-xs text-gray-600 text-center">
-                                        I agree to abide by Cartesian Kinetics
-                                        <a href="#" class="border-b border-gray-500 border-dotted">
-                                            Terms of Service
-                                        </a>
-                                        and its
-                                        <a href="#" class="border-b border-gray-500 border-dotted">
-                                            Privacy Policy
-                                        </a>
-                                    </p>
+                                    <div className='text-center text-[rgba(123,93,249,0.8)] mt-[1em] text-[0.9em] font-semibold'>
+                                        <Link className='hover:underline'>
+                                            Vous n'avez pas de compte ?
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
