@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.conic-gradient-bg {
+/* .conic-gradient-bg {
   @apply bg-[conic-gradient(#9278fd_90deg,_#141625_0deg)];
 }
 
@@ -66,7 +66,7 @@ body {
   overflow: hidden;
   position: relative;
   height: 100%;
-  /* en travail */
+  /* en travail 
 
   background-color: #1e213b;
   border-right: 3px solid #383b54;
@@ -84,7 +84,7 @@ body {
   position: fixed;
   width: 123px;
   overflow: hidden;
-  /* color: #dedddd; */
+  /* color: #dedddd; 
 }
 
 .container-logo{
@@ -163,7 +163,7 @@ body {
 }
 
 
-/* test  */
+/* test  
 
 .un{
   width: 0 !important;
@@ -212,8 +212,8 @@ body {
   transition: 0.3s;
 }
 
-/* medias querry */
+/* medias querry 
 
 @media screen and(max-width: 768px) {
   
-}
+} */

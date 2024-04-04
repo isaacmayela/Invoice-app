@@ -14,17 +14,19 @@ function App() {
 
   return (
     <>
-      <Router>
-        <Routes>             
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/" element={<Layout />}>
-            <Route path='/home' element={<Home/>} />
-            <Route path='/company' element={<Company/>} />
-            <Route path='/invoice/:id' element={<InvoiceDetail/>}/>
-          </Route>
-        </Routes>
-      </Router>
+      <div className={`w-full bg-[#1e213b] flex justify-center items-center overflow-hidden`}>
+        <Router>
+          <Routes>             
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Layout />}>
+              <Route path='/home' element={<Home/>} />
+              <Route path='/company' element={<Company/>} />
+              <Route path='/invoice/:id' element={<InvoiceDetail/>}/>
+            </Route>
+          </Routes>
+        </Router>
+      </div>
     </>
   )
 }
