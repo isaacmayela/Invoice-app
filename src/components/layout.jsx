@@ -45,6 +45,9 @@ function Layout() {
                     <Sidebar />
                     <div className='flex-1 h-full overflow-x-hidden overflow-y-auto'>
                         <Header />
+                        <div className='dark:bg-[red] w-full h-[100px]'>
+                            salaut
+                        </div>
                     </div>
                 </div>
                 )
