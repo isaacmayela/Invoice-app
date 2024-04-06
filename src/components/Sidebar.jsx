@@ -9,23 +9,23 @@ import ComponentIcon from '../icon/ComponentIcon';
 function Sidebar() {
     return (
         <>
-            <div className='bg-[#141625] flex-shrink-0 hidden w-64 border-r border-r-[#7b5df9] md:block'>
+            <div className='bg-[#fff] flex-shrink-0 hidden w-64 border-r border-r-[#7b5df9] md:block'>{/* #141625 dark*/}
                 <div className='flex flex-col h-full'>
                     <nav className="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
                         <div>
-                            <NavLink to={"/home"}  className={({ isActive }) =>isActive ? "text-gray-100 bg-[rgba(123,93,249,0.7)] rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-100 hover:bg-[rgba(123,93,249,0.7)] rounded-md"}>
+                            <NavLink to={"/home"}  className={({ isActive }) =>isActive ? "text-gray-100 bg-[rgba(123,93,249,0.5)] rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-800 hover:bg-[rgba(123,93,249,0.5)] rounded-md"}> {/*bg-[rgba(123,93,249,0.7)]  text-gray-100 dark*/}
                                 <span><HomeIcon/></span>
                                 <span>Accueil</span>
                             </NavLink>
                         </div>
                         <div>
-                            <NavLink  to={"/statistiques"} className={({ isActive }) =>isActive ? "text-gray-100 bg-[rgba(123,93,249,0.7)] rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-100 hover:bg-[rgba(123,93,249,0.7)] rounded-md"}>
+                            <NavLink  to={"/statistiques"} className={({ isActive }) =>isActive ? "text-gray-100 bg-[rgba(123,93,249,0.5)] rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-800 hover:bg-[rgba(123,93,249,0.5)] rounded-md"}>
                                 <span><ChartIcon/></span>
                                 <span>Statistiques</span>
                             </NavLink>
                         </div>
                         <div>
-                            <NavLink  to={"/statistiques"} className={({ isActive }) =>isActive ? "text-gray-100 bg-[rgba(123,93,249,0.7)] rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-100 hover:bg-[rgba(123,93,249,0.7)] rounded-md"}>
+                            <NavLink  to={"/statistiques"} className={({ isActive }) =>isActive ? "text-gray-100 bg-[rgba(123,93,249,0.5)] rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-800 hover:bg-[rgba(123,93,249,0.5)] rounded-md"}>
                                 <span><ComponentIcon/></span>
                                 <span>Compagnies</span>
                             </NavLink>

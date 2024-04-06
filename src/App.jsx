@@ -6,27 +6,40 @@ import InvoiceDetail from './pages/invoice-detail/invoice-detail'
 import Login from './pages/login/login'
 import Register from './pages/register/regster'
 import Company from './pages/company/company'
+import ThemeContext from './contexts/themesContext'
+import { useState, useEffect } from 'react'
 
 function App() {
 
-  // expression regulière pour valider un email :
-  // /(.+)@(.+){2,}\.(.+){2,}/.test("adresse@gmail.com")
+  const [theme, setTheme] = useState("light")
+
+  useEffect(()=>{
+    const savaTheme = localStorage.getItem("theme") || "light"
+    setTheme(savaTheme)
+  },[])
+
+  const toggleTheme = (newTheme) =>{
+    setTheme(newTheme)
+    localStorage.setItem("theme", newTheme)
+  }
 
   return (
     <>
-      <div className={`w-full bg-[#1e213b] flex justify-center items-center overflow-hidden`}>
-        <Router>
-          <Routes>             
-            <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Layout />}>
-              <Route path='/home' element={<Home/>} />
-              <Route path='/company' element={<Company/>} />
-              <Route path='/invoice/:id' element={<InvoiceDetail/>}/>
-            </Route>
-          </Routes>
-        </Router>
-      </div>
+      <ThemeContext.Provider value={{theme, toggleTheme}}>
+        <div className={`w-full bg-[#f5f6ff] flex justify-center items-center overflow-hidden`}>{/* #1e213b dark */}
+          <Router>
+            <Routes>             
+              <Route path="/" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/" element={<Layout />}>
+                <Route path='/home' element={<Home/>} />
+                <Route path='/company' element={<Company/>} />
+                <Route path='/invoice/:id' element={<InvoiceDetail/>}/>
+              </Route>
+            </Routes>
+          </Router>
+        </div>
+      </ThemeContext.Provider>
     </>
   )
 }

@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* .conic{
+  color: #e8e9f3;
+} */
+
 /* .conic-gradient-bg {
   @apply bg-[conic-gradient(#9278fd_90deg,_#141625_0deg)];
 }
