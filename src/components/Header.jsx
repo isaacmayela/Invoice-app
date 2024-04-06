@@ -118,7 +118,7 @@ function Header() {
 
                     <nav
                         className={`absolute flex items-center p-4 bg-[#fff] dark:bg-[#141625] rounded-md shadow-lg top-16 inset-x-4 md:hidden transition duration-300 ease-in-out transform${isMobileSubMenuOpen ? 'opacity-100 translate-y-0 block' : 'opacity-0 -translate-y-full hidden'}`}
-                    >{/*bg-[#141625] dark mode */}
+                    >
                         <div className="space-x-2">
                             <button className="relative focus:outline-none" onClick={toggleTheme}>
                                 <div className="w-12 h-6 transition rounded-full outline-none bg-[rgba(123,93,249,0.3)] dark:bg-[rgba(123,93,249,1)]"></div>
@@ -132,7 +132,7 @@ function Header() {
                                 </div>
                             </button>
                             <button
-                                className="p-2 transition-colors duration-200 rounded-full text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] focus:outline-none focus:bg-primary-100 focus:ring-primary-darker dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]"> {/*p-2 transition-colors duration-200 rounded-full text-[rgba(123,93,249,1)] bg-[#26293f] hover:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] focus:outline-none focus:bg-primary-100 focus:ring-primary-darker dark mode*/}
+                                className="p-2 transition-colors duration-200 rounded-full text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] focus:outline-none focus:bg-primary-100 focus:ring-primary-darker dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]">
                                 <span className="sr-only">Open Notification panel</span>
                                 <BellIcon/>
                             </button>

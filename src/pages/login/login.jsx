@@ -64,7 +64,7 @@ function Login() {
                                     </div>
                                     <button
                                         onClick={handleNavigate}
-                                        className="mt-5 tracking-wide font-semibold bg-[rgba(123,93,249,0.9)] text-white-900 w-full py-4 rounded-lg hover:bg-[rgba(123,93,249,1)] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none dark:bg-[rgba(123,93,249,0.6)] dark:hover:bg-[rgba(123,93,249,0.5)] dark:text-white-500">{/* bg-[rgba(123,93,249,0.8)] hover:bg-[rgba(123,93,249,0.6)] text-white-500 dark*/}
+                                        className="mt-5 tracking-wide font-semibold bg-[rgba(123,93,249,0.9)] text-gray-100 w-full py-4 rounded-lg hover:bg-[rgba(123,93,249,1)] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none dark:bg-[rgba(123,93,249,0.6)] dark:hover:bg-[rgba(123,93,249,0.5)] dark:text-gray-950">{/* bg-[rgba(123,93,249,0.8)] hover:bg-[rgba(123,93,249,0.6)] text-white-500 dark*/}
                                         <UserplusIcon/>
                                         <span className="ml- text-gray-100 font-bold dark:text-gray-950"> {/*text-gray-100 dark */}
                                             Connexion

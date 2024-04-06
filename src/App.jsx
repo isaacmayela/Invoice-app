@@ -10,18 +10,20 @@ import ThemeContext from './contexts/themesContext'
 import { useState, useEffect } from 'react'
 
 function App() {
+  // localStorage.removeItem('theme');
 
-  const [darkMode, setTheme] = useState(false)
+  const [darkMode, setTheme] = useState(false);
 
-  // useEffect(()=>{
-  //   const savaTheme = localStorage.getItem("theme") || "light"
-  //   setTheme(savaTheme)
-  // },[])
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    setTheme(savedTheme === "dark" ? true : false);
+  }, []);
 
-  const toggleTheme = () =>{
-    setTheme(!darkMode)
-    // localStorage.setItem("theme", newTheme)
-  }
+  const toggleTheme = () => {
+    const newTheme = !darkMode;
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
+  };
 
   return (
     <>
