@@ -48,7 +48,7 @@ function SearchPanel() {
                         </span>
                         <input
                             type="text"
-                            className="w-full py-2 pl-10 pr-4 border rounded-full dark:bg-[#1e213b] dark:border-transparent dark:text-light focus:outline-none focus:ring"
+                            className="w-full py-2 pl-10 pr-4 border rounded-full dark:bg-[#1e213b] dark:border-transparent dark:text-gray-300 dark:text-light focus:outline-none focus:ring"
                             placeholder="Search..."
                         />
                     </div>

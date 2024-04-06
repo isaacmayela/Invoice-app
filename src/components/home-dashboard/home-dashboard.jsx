@@ -3,91 +3,142 @@ import { motion } from "framer-motion";
 
 function HomeDashboard() {
 
-    const recentInvoicesNumber = [1,2,3,4,5];
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { staggerChildren: 0.5 } }
-      };
-      
-    const itemVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 }
-    };
-
     return (
         <>
-            <div className="text-[#fff] pt-[1em] pl-[2em]">
-                <h2 className="text-[1.3em] font-semibold">Home</h2>
-                <h2 className="text-[2em] font-semibold">Bonjour Jonathan,</h2>
+            <div class="flex items-center justify-between px-4 py-4 border-b dark:border-b-[#7b5df9] lg:py-6 dark:border-primary-darker">
+              <h1 class="text-2xl font-semibold dark:text-gray-100">Dashboard</h1>
+              <a
+                href="https://github.com/Kamona-WD/kwd-dashboard"
+                target="_blank"
+                class="px-4 py-2 text-sm text-white rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
+              >
+                View on github
+              </a>
             </div>
-            <div className="text-[#fff] px-[2em] mt-[5em]">
-                <div className="grid grid-cols-[repeat(100,1fr)] gap-3">
-                    <div className="col-[1_/_80]">
-                        <h4>Rapports</h4>
-                        <div className="mt-[1em] bg-[#1e213b] rounded-[10px] p-[2em]">
-                            <motion.div variants={containerVariants} initial="hidden" animate="visible" className="grid grid-cols-[repeat(4,1fr)] gap-[2em]">
-                                <motion.div variants={itemVariants} className="bg-[#7b5df9] rounded-[10px] flex items-center justify-center flex-col gap-[0.5em] py-[0.7em]">
-                                    <i class="fas fa-users text-[1.3em]"></i>
-                                    <p className="text-[1.3em] font-semibold">430</p>
-                                    <p className="text-[1.1em] font-light">Clients</p>
-                                </motion.div>
-                                <motion.div variants={itemVariants} className="rounded-[10px] bg-[#282c49] flex items-center justify-center flex-col gap-[0.5em] py-[0.7em]">
-                                    <i class="fa-solid fa-building text-[1.3em]"></i>
-                                    <p className="text-[1.3em] font-semibold">590</p>
-                                    <p className="text-[1.1em] font-light">Compagnies</p>
-                                </motion.div>
-                                <motion.div variants={itemVariants} className="bg-[#7b5df9] rounded-[10px] flex items-center justify-center flex-col gap-[0.5em] py-[0.7em]">
-                                    <i class="fas fa-file-invoice text-[1.3em]"></i>
-                                    <p className="text-[1.3em] font-semibold">670</p>
-                                    <p className="text-[1.1em] font-light">Factures</p>
-                                </motion.div>
-                                <motion.div variants={itemVariants} className="rounded-[10px] bg-[#282c49] flex items-center justify-center flex-col gap-[0.5em] py-[0.7em]">
-                                    <i class="fa-solid fa-sun text-[1.3em]"></i>
-                                    <p className="text-[1.3em] font-semibold">590</p>
-                                    <p className="text-[1.1em] font-light">clients</p>
-                                </motion.div>
-                            </motion.div>
-
-                            <div className="mt-[2em]">
-
-                                {
-                                    recentInvoicesNumber.map((invoiceInfos, index) =>(
-                                        <div className="flex items-center justify-between border-t border-solid border-[#383b54] pt-[0.8em] mb-[1em]" key={index}>
-                                            <div className="flex items-center gap-[0.5em]">
-                                                <i class="fas fa-file-invoice text-[0.9em] text-[rgba(255,255,255,0.8)]"></i>
-                                                <p className="text-[0.9em] text-[rgba(255,255,255,0.8)]">Maquettage d'un site web de deux pages</p>
-                                            </div>
-                                            <div className="flex items-center gap-[0.5em]">
-                                                <p className="bg-[#00ffa9] py-[0.1em] px-[1em] rounded-[30px] text-[#141625] text-[0.9em]">paid</p>
-                                                <p className="text-[0.9em] text-[rgba(255,255,255,0.8)]">3 fév</p>
-                                            </div>
-                                        </div>
-                                    ))
-                                }
-                            </div>
+            <div class="mt-2">
+                <div class="grid grid-cols-1 gap-8 p-4 lg:grid-cols-2 xl:grid-cols-4">
+                    <div class="flex items-center justify-between p-4 bg-white rounded-md dark:bg-[#141625]">
+                        <div>
+                            <h6
+                            class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
+                            >
+                            Value
+                            </h6>
+                            <span class="text-xl font-semibold">$30,000</span>
+                            <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
+                            +4.4%
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                            <svg
+                                class="w-12 h-12 text-gray-300 dark:text-primary-dark"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                            </span>
                         </div>
                     </div>
-                    <div className="col-[80_/_101]">
-                        <h4>Performances</h4>
+                    <div class="flex items-center justify-between p-4 bg-white rounded-md dark:bg-[#141625]">
                         <div>
-                            <div className="mt-[1em] bg-[#1e213b] rounded-[10px] flex-col flex items-center justify-center p-[1em]">
-                                Facture payées
-                                <div className="w-[100px] h-[100px] bg-[#141625] rounded-full flex items-center justify-center mt-[0.5em] conic-gradient-bg">
-                                    <div className="w-[70px] h-[70px] bg-[#1e213b] rounded-full flex items-center justify-center">
-                                        15%
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="mt-[1em] bg-[#1e213b] rounded-[10px] flex-col flex items-center justify-center p-[1em]">
-                                Facture non-payées
-                                <div className="w-[100px] h-[100px] bg-[#141625] rounded-full flex items-center justify-center mt-[0.5em] conic-gradient-bg">
-                                    <div className="w-[70px] h-[70px] bg-[#1e213b] rounded-full flex items-center justify-center">
-                                        15%
-                                    </div>
-                                </div>
-                            </div>
+                            <h6
+                            class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
+                            >
+                            Value
+                            </h6>
+                            <span class="text-xl font-semibold">$30,000</span>
+                            <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
+                            +4.4%
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                            <svg
+                                class="w-12 h-12 text-gray-300 dark:text-primary-dark"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-white rounded-md dark:bg-[#141625]">
+                        <div>
+                            <h6
+                            class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
+                            >
+                            Value
+                            </h6>
+                            <span class="text-xl font-semibold">$30,000</span>
+                            <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
+                            +4.4%
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                            <svg
+                                class="w-12 h-12 text-gray-300 dark:text-primary-dark"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 bg-white rounded-md dark:bg-[#141625]">
+                        <div>
+                            <h6
+                            class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
+                            >
+                            Value
+                            </h6>
+                            <span class="text-xl font-semibold">$30,000</span>
+                            <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
+                            +4.4%
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                            <svg
+                                class="w-12 h-12 text-gray-300 dark:text-primary-dark"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                            </span>
                         </div>
                     </div>
                 </div>

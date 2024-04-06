@@ -9,7 +9,7 @@ import ComponentIcon from '../icon/ComponentIcon';
 function Sidebar() {
     return (
         <>
-            <div className='bg-[#fff] flex-shrink-0 hidden w-64 border-r border-r-[#7b5df9] md:block dark:bg-[#141625]'>{/* #141625 dark*/}
+            <div className='bg-[#fff] flex-shrink-0 hidden w-64 border-r dark:border-r-[#7b5df9] md:block dark:bg-[#141625]'>{/* #141625 dark*/}
                 <div className='flex flex-col h-full'>
                     <nav className="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
                         <div>

@@ -55,7 +55,7 @@ function Header() {
     return (
         <>
             <header className="relative bg-[#fff] dark:bg-[#141625]">
-                <div className="flex items-center justify-between p-2 border-b border-b-[#7b5df9]">
+                <div className="flex items-center justify-between p-2 border-b dark:border-b-[#7b5df9]">
                     <button
                         onClick={onMobileMainOpen}
                         className="p-1 transition-colors duration-200 rounded-md text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] md:hidden focus:outline-none focus:ring dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]"
