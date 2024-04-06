@@ -10,12 +10,15 @@ import LoadingBar from 'react-top-loading-bar';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import Loader from '../common/Loader';
+import SearchPanel from './SearchPanel';
+import SearchPanelContext from '../contexts/searchpanelContext';
 
 
 
 function Layout() {
 
     const [loading, setLoading] = useState(true);
+    const [isSearchPanleMenu, setIsSearchPanleMenu] = useState(false);
     const { pathname } = useLocation();
     const [progress, setProgress] = useState()
 
@@ -40,16 +43,19 @@ function Layout() {
                 loading ? (
                     <Loader />
                 ) : (
-                <div className='flex h-screen w-full antialiased'>
-                    <LoadingBar color='rgba(123,93,249,1)' progress={progress} onLoaderFinished={()=>{setProgress(0)}}/>
-                    <Sidebar />
-                    <div className='flex-1 h-full overflow-x-hidden overflow-y-auto'>
-                        <Header />
-                        <div className='dark:bg-[red] w-full h-[100px]'>
-                            salaut
+                <SearchPanelContext.Provider value={{isSearchPanleMenu, setIsSearchPanleMenu}}>
+                    <div className='flex h-screen w-full antialiased'>
+                        <LoadingBar color='rgba(123,93,249,1)' progress={progress} onLoaderFinished={()=>{setProgress(0)}}/>
+                        <Sidebar />
+                        <div className='flex-1 h-full overflow-x-hidden overflow-y-auto'>
+                            <Header />
+                            <div className='dark:bg-[red] w-full h-[100px]'>
+                                salaut
+                            </div>
                         </div>
+                        <SearchPanel/>
                     </div>
-                </div>
+                </SearchPanelContext.Provider>
                 )
             }
         </>

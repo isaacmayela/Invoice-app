@@ -15,10 +15,17 @@ import ChartIcon from "../icon/ChartIcon"
 import ComponentIcon from "../icon/ComponentIcon"
 import { useContext } from "react"
 import ThemeContext from "../contexts/themesContext"
+import SimpleUserIcon from "../icon/SimpleUserIcon"
+import ProfileSettingsIcon from "../icon/ProfileSettingsIcon"
+import LogoutIcon from "../icon/LogoutIcon"
+import { CSSTransition } from 'react-transition-group';
+import SearchPanelContext from "../contexts/searchpanelContext"
  
 function Header() {
 
     const{ darkMode, toggleTheme } = useContext(ThemeContext)
+
+    const{ isSearchPanleMenu, setIsSearchPanleMenu } = useContext(SearchPanelContext)
 
     const [isMobileSubMenuOpen, setIsMobileSubMenuOpen] = useState(false)
     const [isMobileMainMenuOpen, setIsMobileMainMenuOpen] = useState(false)
@@ -88,6 +95,9 @@ function Header() {
                             <BellIcon/>
                         </button>
                         <button
+                            onClick={()=>{
+                                setIsSearchPanleMenu(true)
+                            }}
                             className="p-2 transition-colors duration-200 rounded-full text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] focus:outline-none focus:bg-primary-100 focus:ring-primary-darker dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]">
                             <span className="sr-only">Open Search panel</span>
                             <SearchIcon/>
@@ -107,19 +117,38 @@ function Header() {
                                 <img className="w-10 h-10 rounded-full" src={userIcon} alt="user icon" />
                             </button>
 
-                            <div
-                                className={`absolute right-0 w-48 py-1 bg-[#fff] dark:bg-[#343749] rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 focus:outline-none ${isUserMenu ? 'block' : 'hidden'}`}
-                            >
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
-                                    Mon Profile
-                                </Link>
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
-                                    Paramètres
-                                </Link>
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
-                                    Deconnexion
-                                </Link>
-                            </div>
+                            {/* on work */}
+
+                            <CSSTransition
+                                in={isUserMenu}
+                                timeout={50}
+                                classNames={{
+                                    enter: 'translate-y-1/4 opacity-0',
+                                    enterActive: 'translate-y-0 opacity-100',
+                                    exit: 'translate-y-0 opacity-100',
+                                    exitActive: 'translate-y-1/2 opacity-0',
+                                }}
+                                
+                                >
+                                    <div
+                                        className={`absolute right-0 w-48 py-1 bg-[#fff] dark:bg-[#343749] rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 focus:outline-none transition-all ${isUserMenu ? 'block' : 'hidden'}`}
+                                    >
+                                        <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                            <SimpleUserIcon/>
+                                            Mon Profile
+                                        </Link>
+                                        <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                            <ProfileSettingsIcon/>
+                                            Paramètres
+                                        </Link>
+                                        <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                            <LogoutIcon/>
+                                            Deconnexion
+                                        </Link>
+                                    </div>
+                                </CSSTransition>
+
+                            {/* on work */}
                         </div>
                     </nav>
                     {/* Mobile sub-menu */}
@@ -144,6 +173,7 @@ function Header() {
                                 <BellIcon/>
                             </button>
                             <button
+                                onClick={()=>{setIsSearchPanleMenu(true)}}
                                 className="p-2 transition-colors duration-200 rounded-full text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] focus:outline-none focus:bg-primary-100 focus:ring-primary-darker dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]">
                                 <span className="sr-only">Open Search panel</span>
                                 <SearchIcon/>
@@ -169,13 +199,16 @@ function Header() {
                             <div
                                 className={`absolute right-0 w-48 py-1 origin-top-right bg-white dark:bg-[#343749] rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 md:hidden dark:bg-dark ${isUserMobileMenu ? 'block' : 'hidden'}`}
                             >
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                    <SimpleUserIcon/>
                                     Mon Profile
                                 </Link>
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                    <ProfileSettingsIcon/>
                                     Paramètres
                                 </Link>
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                    <LogoutIcon/>
                                     Deconnexion
                                 </Link>
                             </div>
