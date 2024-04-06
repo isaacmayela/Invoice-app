@@ -22,25 +22,37 @@ function Header() {
 
     const [isMobileSubMenuOpen, setIsMobileSubMenuOpen] = useState(false)
     const [isMobileMainMenuOpen, setIsMobileMainMenuOpen] = useState(false)
+    const [isUserMenu, setiIsUserMenu] = useState(false)
+    const [isUserMobileMenu, setiIsUserMobileMenu] = useState(false)
 
     function onMobileMenuOpen() {
         setIsMobileMainMenuOpen(false)
+        setiIsUserMobileMenu(false)
         setIsMobileSubMenuOpen(!isMobileSubMenuOpen);
     }
 
     function onMobileMainOpen() {
         setIsMobileSubMenuOpen(false)
+        setiIsUserMobileMenu(false)
         setIsMobileMainMenuOpen(!isMobileMainMenuOpen);
+    }
+
+    function onUserMenuOpen() {
+        setiIsUserMenu(!isUserMenu)
+    }
+
+    function onUserMobileMenuOpen() {
+        setiIsUserMobileMenu(!isUserMobileMenu)
     }
 
     return (
         <>
-            <header className="relative bg-[#fff] dark:bg-[#141625]">{/* #141625 dark*/}
+            <header className="relative bg-[#fff] dark:bg-[#141625]">
                 <div className="flex items-center justify-between p-2 border-b border-b-[#7b5df9]">
                     <button
                         onClick={onMobileMainOpen}
                         className="p-1 transition-colors duration-200 rounded-md text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] md:hidden focus:outline-none focus:ring dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]"
-                    > {/* text-[rgba(123,93,249,1)]  bg-[#26293f] hover:text-grayhover:bg-[rgba(123,93,249,0.5)]-100  dark*/}
+                    >
                         <span className="sr-only">Open main manu</span>
                         <span aria-hidden="true">
                             <LinesIcon/>
@@ -60,15 +72,14 @@ function Header() {
                     </button>
                     <nav className="hidden space-x-2 md:flex md:items-center">
                         <button className="relative focus:outline-none" onClick={toggleTheme}>
-                            <div className="w-12 h-6 transition rounded-full outline-none bg-[rgba(123,93,249,0.3)] dark:bg-[rgba(123,93,249,1)]"></div> {/* bg-[rgba(123,93,249,1)]  dark*/}
-                            <div className="absolute top-0 left-0 inline-flex items-center justify-center w-6 h-6 transition-all duration-150 transform scale-110 rounded-full shadow-sm translate-x-0 dark:translate-x-6 text-gray-800 bg-[#fff] dark:bg-[#343749] dark:text-gray-100"> {/* bg-[#343749]  text-gray-100 dark*/}
+                            <div className="w-12 h-6 transition rounded-full outline-none bg-[rgba(123,93,249,0.3)] dark:bg-[rgba(123,93,249,1)]"></div>
+                            <div className="absolute top-0 left-0 inline-flex items-center justify-center w-6 h-6 transition-all duration-150 transform scale-110 rounded-full shadow-sm translate-x-0 dark:translate-x-6 text-gray-800 bg-[#fff] dark:bg-[#343749] dark:text-gray-100">
                                 {
                                     darkMode ?
                                     <MoonIcon/>
                                     :<SunIcon/>
                                 }
                                 
-                                {/* <SunIcon/> */}
                             </div>
                         </button>
                         <button
@@ -88,6 +99,7 @@ function Header() {
                         </button>
                         <div className="relative">
                             <button
+                                onClick={onUserMenuOpen}
                                 type="button"
                                 className="transition-opacity duration-200 rounded-full dark:opacity-75 dark:hover:opacity-100 focus:outline-none focus:ring dark:focus:opacity-100"
                             >
@@ -95,23 +107,19 @@ function Header() {
                                 <img className="w-10 h-10 rounded-full" src={userIcon} alt="user icon" />
                             </button>
 
-                            {/* <div
-                                class="absolute right-0 w-48 py-1 bg-[#343749] rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            <div
+                                className={`absolute right-0 w-48 py-1 bg-[#fff] dark:bg-[#343749] rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 focus:outline-none ${isUserMenu ? 'block' : 'hidden'}`}
                             >
-                                <a
-                                href="#"
-                                role="menuitem"
-                                class="block px-4 py-2 text-sm text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                >
-                                Your Profile
-                                </a>
-                                <a href="#" role="menuitem" class="block px-4 py-2 text-sm text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                    Settings
-                                </a>
-                                <a href="#" role="menuitem" class="block px-4 py-2 text-sm text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary">
-                                    Logout
-                                </a>
-                            </div> */}
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                    Mon Profile
+                                </Link>
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                    Paramètres
+                                </Link>
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                    Deconnexion
+                                </Link>
+                            </div>
                         </div>
                     </nav>
                     {/* Mobile sub-menu */}
@@ -128,7 +136,6 @@ function Header() {
                                     <MoonIcon/>
                                     :<SunIcon/>
                                 }
-                                    {/* <SunIcon/> */}
                                 </div>
                             </button>
                             <button
@@ -149,6 +156,7 @@ function Header() {
                         </div>
                         <div className="relative ml-auto">
                             <button
+                                onClick={onUserMobileMenuOpen}
                                 type="button"
                                 className="transition-opacity duration-200 rounded-full dark:opacity-75 dark:hover:opacity-100 focus:outline-none focus:ring dark:focus:opacity-100"
                             >
@@ -157,6 +165,20 @@ function Header() {
                             </button>
 
                             {/* Modal comment div */}
+
+                            <div
+                                className={`absolute right-0 w-48 py-1 origin-top-right bg-white dark:bg-[#343749] rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 md:hidden dark:bg-dark ${isUserMobileMenu ? 'block' : 'hidden'}`}
+                            >
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                    Mon Profile
+                                </Link>
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                    Paramètres
+                                </Link>
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)]">
+                                    Deconnexion
+                                </Link>
+                            </div>
 
                         </div>
                     </nav>
