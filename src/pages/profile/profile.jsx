@@ -5,8 +5,8 @@ function Profile() {
     return (
         <>
 
-            <div class="flex items-center justify-between px-4 py-4 border-b dark:border-b-[#7b5df9] lg:py-6 dark:border-primary-darker">
-                <h1 class="text-2xl font-semibold dark:text-gray-100">Paramètres du compte</h1>
+            <div className="flex items-center justify-between px-4 py-4 border-b dark:border-b-[#7b5df9] lg:py-6 dark:border-primary-darker">
+                <h1 className="text-2xl font-semibold dark:text-gray-100">Compte</h1>
                 <div className="flex gap-[0.5em]">
                     <Link to={"/home"} className="text-gray-100 dark:text-gray-400 text-gray-700 font-semibold">Dashboard /</Link>
                     <p className="font-semibold dark:text-[rgba(123,93,249,0.7)] text-[rgba(123,93,249,0.5)]">Profile </p>
