@@ -7,7 +7,7 @@ const options = {
     fontFamily: 'Satoshi, sans-serif',
     type: 'donut',
   },
-  colors: ['#3C50E0', '#6577F3', '#8FD0EF'],
+  colors: ['#8566fa', '#7152e8', '#5e3fd6'],
   labels: ['Payée', 'En cours', 'En projet'],
   legend: {
     show: false,

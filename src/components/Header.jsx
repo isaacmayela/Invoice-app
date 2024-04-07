@@ -20,6 +20,7 @@ import ProfileSettingsIcon from "../icon/ProfileSettingsIcon"
 import LogoutIcon from "../icon/LogoutIcon"
 import { CSSTransition } from 'react-transition-group';
 import SearchPanelContext from "../contexts/searchpanelContext"
+import SimpleUserTwoIcon from "../icon/SimpleUser2"
  
 function Header() {
 
@@ -133,15 +134,15 @@ function Header() {
                                     <div
                                         className={`absolute right-0 w-48 py-1 bg-[#fff] dark:bg-[#343749] rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 focus:outline-none transition-all ${isUserMenu ? 'block' : 'hidden'}`}
                                     >
-                                        <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                        <Link to={"/profile"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={()=>{setiIsUserMenu(false)}}>
                                             <SimpleUserIcon/>
                                             Mon Profile
                                         </Link>
-                                        <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                        <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={()=>{setiIsUserMenu(false)}}>
                                             <ProfileSettingsIcon/>
                                             Paramètres
                                         </Link>
-                                        <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                        <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={()=>{setiIsUserMenu(false)}}>
                                             <LogoutIcon/>
                                             Deconnexion
                                         </Link>
@@ -199,15 +200,15 @@ function Header() {
                             <div
                                 className={`absolute right-0 w-48 py-1 origin-top-right bg-white dark:bg-[#343749] rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 md:hidden dark:bg-dark ${isUserMobileMenu ? 'block' : 'hidden'}`}
                             >
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                <Link to={"/profile"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={()=>{setiIsUserMobileMenu(false); setIsMobileSubMenuOpen(false)}}>
                                     <SimpleUserIcon/>
                                     Mon Profile
                                 </Link>
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={()=>{setiIsUserMobileMenu(false); setIsMobileSubMenuOpen(false)}}>
                                     <ProfileSettingsIcon/>
                                     Paramètres
                                 </Link>
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]">
+                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={()=>{setiIsUserMobileMenu(false); setIsMobileSubMenuOpen(false)}}>
                                     <LogoutIcon/>
                                     Deconnexion
                                 </Link>
@@ -235,6 +236,12 @@ function Header() {
                             <NavLink  to={"/statistiques"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"}>
                                 <span><ComponentIcon/></span>
                                 <span>Compagnies</span>
+                            </NavLink>
+                        </div>
+                        <div>
+                            <NavLink  to={"/profile"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"}>
+                                <span><SimpleUserTwoIcon/></span>
+                                <span>Profile</span>
                             </NavLink>
                         </div>
                     </nav>

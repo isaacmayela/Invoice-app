@@ -8,6 +8,7 @@ import Register from './pages/register/regster'
 import Company from './pages/company/company'
 import ThemeContext from './contexts/themesContext'
 import { useState, useEffect } from 'react'
+import Profile from './pages/profile/profile'
 
 function App() {
   // localStorage.removeItem('theme');
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/" element={<Layout />}>
                   <Route path='/home' element={<Home/>} />
+                  <Route path='/profile' element={<Profile/>} />
                   <Route path='/company' element={<Company/>} />
                   <Route path='/invoice/:id' element={<InvoiceDetail/>}/>
                 </Route>

@@ -7,14 +7,10 @@ function HomeDashboard() {
     return (
         <>
             <div class="flex items-center justify-between px-4 py-4 border-b dark:border-b-[#7b5df9] lg:py-6 dark:border-primary-darker">
-              <h1 class="text-2xl font-semibold dark:text-gray-100">Dashboard</h1>
-              <a
-                href="https://github.com/Kamona-WD/kwd-dashboard"
-                target="_blank"
-                class="px-4 py-2 text-sm text-white rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
-              >
-                View on github
-              </a>
+                <h1 class="text-2xl font-semibold dark:text-gray-100">Dashboard</h1>
+                <div className="flex gap-[0.5em]">
+                    <p className="font-semibold dark:text-[rgba(123,93,249,0.7)] text-[rgba(123,93,249,0.5)]">Dashboard </p>
+                </div>
             </div>
             <div class="mt-2">
                 <div class="grid grid-cols-1 gap-8 p-4 lg:grid-cols-2 xl:grid-cols-4">
