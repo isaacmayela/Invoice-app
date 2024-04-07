@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-
+import ChartThree from "../chart/donutChart";
+import RecentIvoices from "../RencentIvoice";
 
 function HomeDashboard() {
 
@@ -142,7 +143,19 @@ function HomeDashboard() {
                         </div>
                     </div>
                 </div>
+                {/* on work */}
+                <div class="grid grid-cols-1 p-4 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-3">
+                    {/* line chart */}
+                    <RecentIvoices/>
+
+                    {/* donut chart */}
+
+                    <div>
+                        <ChartThree/>
+                    </div>
+                </div>
             </div>
+
         </>
     )
 }

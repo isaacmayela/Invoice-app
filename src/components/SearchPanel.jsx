@@ -57,7 +57,7 @@ function SearchPanel() {
                         <h3 class="py-2 text-sm font-semibold dark:text-gray-100 text-gray-900 dark:text-light">Factures</h3>
                         <Link to={"#"} className="flex space-x-4">
                             <div class="flex-shrink-0 text-black dark:text-white pt-[0.3em]">
-                                <FormsIcon />
+                                <i className="fas fa-file-invoice text-[0.9em] dark:text-gray-100 text-[1.2em]"></i>
                             </div>
                             <div class="flex-1 max-w-xs overflow-hidden">
                                 <h4 class="text-sm font-semibold dark:text-gray-300 dark:text-light text-gray-700">Kadea software</h4>
@@ -69,7 +69,7 @@ function SearchPanel() {
                         </Link>
                         <Link to={"#"} className="flex space-x-4">
                             <div class="flex-shrink-0 text-black dark:text-white pt-[0.3em]">
-                                <FormsIcon />
+                                <i className="fas fa-file-invoice text-[0.9em] dark:text-gray-100 text-[1.2em]"></i>
                             </div>
                             <div class="flex-1 max-w-xs overflow-hidden">
                                 <h4 class="text-sm font-semibold dark:text-gray-100 dark:text-light text-gray-900">Magali.com</h4>
@@ -81,7 +81,7 @@ function SearchPanel() {
                         </Link>
                         <Link to={"#"} className="flex space-x-4">
                             <div class="flex-shrink-0 text-black dark:text-white pt-[0.3em]">
-                                <FormsIcon />
+                                <i className="fas fa-file-invoice text-[0.9em] dark:text-gray-100 text-[1.2em]"></i>
                             </div>
                             <div class="flex-1 max-w-xs overflow-hidden">
                                 <h4 class="text-sm font-semibold dark:text-gray-300 dark:text-light text-gray-700">Kadea software</h4>
@@ -93,7 +93,7 @@ function SearchPanel() {
                         </Link>
                         <Link to={"#"} className="flex space-x-4">
                             <div class="flex-shrink-0 text-black dark:text-white pt-[0.3em]">
-                                <FormsIcon />
+                                <i className="fas fa-file-invoice text-[0.9em] dark:text-gray-100 text-[1.2em]"></i>
                             </div>
                             <div class="flex-1 max-w-xs overflow-hidden">
                                 <h4 class="text-sm font-semibold dark:text-gray-100 dark:text-light text-gray-900">Magali.com</h4>
