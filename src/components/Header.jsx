@@ -229,7 +229,7 @@ function Header() {
                             </NavLink>
                         </div>
                         <div>
-                            <NavLink  to={"/statistiques"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
+                            <NavLink  to={"/company"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
                                 <span><ComponentIcon/></span>
                                 <span>Compagnies</span>
                             </NavLink>
