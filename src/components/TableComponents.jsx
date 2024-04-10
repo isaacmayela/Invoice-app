@@ -8,6 +8,9 @@ import CheckPaidIcon from "../icon/CheckPaidIcon"
 import CrossUnpaidIcon from "../icon/CrossUnpaidIcon"
 import ChevronsLeftIcon from "../icon/ChevronsLeftIcon"
 import ChevronsRightIcon from "../icon/ChevronsRight"
+import ProfileSettingsIcon from "../icon/ProfileSettingsIcon"
+import SheetIcon from "../icon/SheetIcon"
+import ChevronDowncon from "../icon/ChevronDownIcon"
 
 function TableComponent() {
 
@@ -15,6 +18,24 @@ function TableComponent() {
 
     return (
         <>
+            <div className="flex start mt-[2em]">
+                <div className="flex items-center gap-[1em] flex-col md:flex-row">
+                    <div className="flex items-center gap-[1em] start w-full">
+                        <button className="bg-white dark:bg-[#141625] flex items-center py-[0.3em] rounded-md px-[0.7em] gap-[0.7em] shadow-md text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200">
+                            <span className="flex items-center"><SheetIcon/> Factures</span>
+                            <ChevronDowncon/>
+                        </button>
+                        <button className="bg-white dark:bg-[#141625] rounded-md p-[0.5em] shadow-md dark:text-gray-300 text-gray-500 hover:text-gray-700 dark:hover:text-gray-200"><ProfileSettingsIcon/></button>
+                    </div>
+                    <div className="flex items-center gap-[1em]">
+                        <input type="text" placeholder="Rechercher..." className="placeholder:text-red py-[0.3em] rounded-md px-[0.7em] shadow-md dark:bg-[#141625] dark:text-gray-200 outline-none"/>
+                        <button className="bg-white dark:bg-[#141625] flex items-center py-[0.3em] rounded-md px-[0.7em] gap-[0.7em] shadow-md text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200">
+                            <span className="flex items-center">Tout</span>
+                            <ChevronDowncon/>
+                        </button>
+                    </div>
+                </div>
+            </div>
             
             <div className="mt-[2em] bg-white py-[1em] px-[0.7em] rounded-md dark:bg-[#141625] font-sans space-y-4 overflow-x-auto shadow-md">
                 <div className="sm:w-full w-[100em] md:w-[100em] lg:w-[100em] xl:w-[inherit]">
@@ -55,7 +76,7 @@ function TableComponent() {
                 </div>
             </div>
 
-            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4 mb-[2em]">
                 <span class="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900 dark:text-white">1-10</span> of <span class="font-semibold text-gray-900 dark:text-white">1000</span></span>
                 <ul class="inline-flex gap-[0.5em] -space-x-px rtl:space-x-reverse text-sm h-8">
                     <li>
