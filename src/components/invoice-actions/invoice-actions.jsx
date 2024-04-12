@@ -4,11 +4,11 @@ import FormContext from "../../contexts/displayFormContext"
 
 function InvoiceActions() {
 
-    const { isEditForm, setIsEditForm } = useContext(FormContext)
+    // const { isEditForm, setIsEditForm } = useContext(FormContext)
 
-    const handleDisplayEditForm = () =>{
-        setIsEditForm(true)
-    }
+    // const handleDisplayEditForm = () =>{
+    //     setIsEditForm(true)
+    // }
 
     return (
       <>
@@ -22,7 +22,7 @@ function InvoiceActions() {
                     </div>
                 </div>
                 <div className="button-actions">
-                    <button className="btn-white" onClick={handleDisplayEditForm}>Edit</button>
+                    <button className="btn-white">Edit</button>
                     <button className="btn-red">Delete</button>
                     <button className="btn-violet">Mark as Paid</button>
                 </div>

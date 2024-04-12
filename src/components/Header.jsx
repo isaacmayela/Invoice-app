@@ -56,7 +56,7 @@ function Header() {
     return (
         <>
             <header className="relative bg-[#fff] dark:bg-[#141625]">
-                <div className="flex items-center justify-between p-2 border-b dark:border-b-[#7b5df9]">
+                <div className="flex items-center justify-between p-2 border-b dark:border-b-[rgba(123,93,249,0.7)]">
                     <button
                         onClick={onMobileMainOpen}
                         className="p-1 transition-colors duration-200 rounded-md text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] md:hidden focus:outline-none focus:ring dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]"
@@ -229,7 +229,7 @@ function Header() {
                             </NavLink>
                         </div>
                         <div>
-                            <NavLink  to={"/company"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
+                            <NavLink  to={"/company-list"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
                                 <span><ComponentIcon/></span>
                                 <span>Compagnies</span>
                             </NavLink>

@@ -9,6 +9,7 @@ import Company from './pages/company/company'
 import ThemeContext from './contexts/themesContext'
 import { useState, useEffect } from 'react'
 import Profile from './pages/profile/profile'
+import CompagniesList from './pages/company-list/CompangiesList'
 
 function App() {
   // localStorage.removeItem('theme');
@@ -38,9 +39,11 @@ function App() {
                 <Route path="/" element={<Layout />}>
                   <Route path='/home' element={<Home/>} />
                   <Route path='/profile' element={<Profile/>} />
-                  <Route path='/company' element={<Company/>} />
-                  <Route path='/invoice/:id' element={<InvoiceDetail/>}/>
+                  <Route path='/company-list' element={<CompagniesList/>} />
+                  <Route path='/company/details' element={<Company/>} />
+                  {/* <Route path='/statitics' element={<Company/>} /> */}
                 </Route>
+                <Route path='/invoice' element={<InvoiceDetail/>}/>
               </Routes>
             </Router>
           </div>

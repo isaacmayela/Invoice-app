@@ -4,8 +4,7 @@ function Company() {
 
   return (
     <>
-        <CompanyDetails/>
-
+      <CompanyDetails/>
     </>
   )
 }

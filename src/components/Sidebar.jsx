@@ -10,7 +10,7 @@ import SimpleUserTwoIcon from '../icon/SimpleUser2';
 function Sidebar() {
     return (
         <>
-            <div className='bg-[#fff] flex-shrink-0 hidden w-64 border-r dark:border-r-[#7b5df9] md:block dark:bg-[#141625]'>{/* #141625 dark*/}
+            <div className='bg-[#fff] flex-shrink-0 hidden w-64 border-r dark:border-r-[rgba(123,93,249,0.7)] md:block dark:bg-[#141625]'>{/* #141625 dark*/}
                 <div className='flex flex-col h-full'>
                     <nav className="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
                         <div>
@@ -26,7 +26,7 @@ function Sidebar() {
                             </NavLink>
                         </div>
                         <div>
-                            <NavLink  to={"/company"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"}>
+                            <NavLink  to={"/company-list"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"}>
                                 <span><ComponentIcon/></span>
                                 <span>Compagnies</span>
                             </NavLink>

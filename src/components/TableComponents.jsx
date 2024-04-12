@@ -11,6 +11,7 @@ import ChevronsRightIcon from "../icon/ChevronsRight"
 import ProfileSettingsIcon from "../icon/ProfileSettingsIcon"
 import SheetIcon from "../icon/SheetIcon"
 import ChevronDowncon from "../icon/ChevronDownIcon"
+import SquarePencilIcon from "../icon/SquarePencilIcon"
 
 function TableComponent() {
 
@@ -63,11 +64,12 @@ function TableComponent() {
                                             <h5 className="font-bold text-[0.8em] text-[#07cc9e]">PENDING</h5>
                                         </div>
                                     </li>
-                                    <li className="col-[90_/_101] flex items-center gap-[1em]">
+                                    <li className="col-[90_/_101] flex items-center gap-[0.5em]">
                                         <button className="bg-[rgba(0,0,0,0.1)] p-[0.4em] rounded-md"><TrashIcon/></button>
-                                        <Link className="bg-[rgba(0,0,0,0.1)] p-[0.4em] rounded-md">
+                                        <Link to={"/invoice"} className="bg-[rgba(0,0,0,0.1)] p-[0.4em] rounded-md">
                                             <ScanEyeIcon/>                            
                                         </Link>
+                                        <button className="bg-[rgba(0,0,0,0.1)] p-[0.4em] rounded-md"><SquarePencilIcon/></button>
                                     </li>
                                 </ul>
                             </div>
