@@ -10,6 +10,9 @@ import ThemeContext from './contexts/themesContext'
 import { useState, useEffect } from 'react'
 import Profile from './pages/profile/profile'
 import CompagniesList from './pages/company-list/CompangiesList'
+import EmailConfirm from './pages/email-confirm/EmailConfirm'
+import ForgotPassword from './pages/forgotPassword/ForgotPassword'
+import ChangePassword from './pages/changePassword/changePassword'
 
 function App() {
   // localStorage.removeItem('theme');
@@ -36,6 +39,9 @@ function App() {
               <Routes>             
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/email-confirm" element={<EmailConfirm />} />
+                <Route path="/forgotPassword" element={<ForgotPassword />} />
+                <Route path="/changePassword" element={<ChangePassword />} />
                 <Route path="/" element={<Layout />}>
                   <Route path='/home' element={<Home/>} />
                   <Route path='/profile' element={<Profile/>} />

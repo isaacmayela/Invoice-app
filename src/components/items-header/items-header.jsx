@@ -1,6 +1,5 @@
 import "./invoice-header.css"
 import { Link } from "react-router-dom"
-import UsefulFeatures from "../../utils/usefulFeatures"
 import { useContext } from "react"
 import FormContext from "../../contexts/displayFormContext"
 

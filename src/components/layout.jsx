@@ -1,6 +1,5 @@
 import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
 import userLogo from "../assets/user_image.png"
-import UsefulFeatures from '../utils/usefulFeatures';
 import FormContext from '../contexts/displayFormContext';
 import { useEffect, useState } from 'react';
 import InvoiceForm from './invoice-form/invoice-form';
