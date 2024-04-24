@@ -11,10 +11,15 @@ import Header from './Header';
 import Loader from '../common/Loader';
 import SearchPanel from './SearchPanel';
 import SearchPanelContext from '../contexts/searchpanelContext';
-
+import { useSelector } from "react-redux";
 
 
 function Layout() {
+
+    const darkMode = useSelector((state) => state.theme.value);
+
+    const userDatas = useSelector((state) => state.user.userData);
+    console.log(userDatas);
 
     const [loading, setLoading] = useState(true);
     const [isSearchPanleMenu, setIsSearchPanleMenu] = useState(false);
@@ -38,25 +43,27 @@ function Layout() {
 
     return (
         <>
-            {
-                loading ? (
-                    <Loader />
-                ) : (
-                <SearchPanelContext.Provider value={{isSearchPanleMenu, setIsSearchPanleMenu}}>
-                    <div className='flex h-screen w-full antialiased'>
-                        <LoadingBar color='rgba(123,93,249,1)' progress={progress} onLoaderFinished={()=>{setProgress(0)}}/>
-                        <Sidebar />
-                        <div className='flex-1 h-full overflow-x-hidden overflow-y-auto'>
-                            <Header />
-                            <main>
-                                <Outlet/>
-                            </main>
+            <div className={`${darkMode && "dark"} w-full`}>
+                {
+                    loading ? (
+                        <Loader />
+                    ) : (
+                    <SearchPanelContext.Provider value={{isSearchPanleMenu, setIsSearchPanleMenu}}>
+                        <div className='flex h-screen w-[inherit] antialiased dark:bg-[#1e213b]'>
+                            <LoadingBar color='rgba(123,93,249,1)' progress={progress} onLoaderFinished={()=>{setProgress(0)}}/>
+                            <Sidebar />
+                            <div className='flex-1 h-full overflow-x-hidden overflow-y-auto'>
+                                <Header />
+                                <main>
+                                    <Outlet/>
+                                </main>
+                            </div>
+                            <SearchPanel/>
                         </div>
-                        <SearchPanel/>
-                    </div>
-                </SearchPanelContext.Provider>
-                )
-            }
+                    </SearchPanelContext.Provider>
+                    )
+                }
+            </div>
         </>
     )
 }

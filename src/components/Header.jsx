@@ -21,10 +21,13 @@ import LogoutIcon from "../icon/LogoutIcon"
 import { CSSTransition } from 'react-transition-group';
 import SearchPanelContext from "../contexts/searchpanelContext"
 import SimpleUserTwoIcon from "../icon/SimpleUser2"
+import { useDispatch, useSelector } from "react-redux";
+import { setTheme } from "../redux/slice/ThemeSlice"
  
 function Header() {
 
-    const{ darkMode, toggleTheme } = useContext(ThemeContext)
+    const darkMode = useSelector((state) => state.theme.value);
+    const dispatch = useDispatch();
 
     const{ isSearchPanleMenu, setIsSearchPanleMenu } = useContext(SearchPanelContext)
 
@@ -79,7 +82,7 @@ function Header() {
                         </span>
                     </button>
                     <nav className="hidden space-x-2 md:flex md:items-center">
-                        <button className="relative focus:outline-none" onClick={toggleTheme}>
+                        <button className="relative focus:outline-none" onClick={() => {dispatch(setTheme(!darkMode))}}>
                             <div className="w-12 h-6 transition rounded-full outline-none bg-[rgba(123,93,249,0.3)] dark:bg-[rgba(123,93,249,1)]"></div>
                             <div className="absolute top-0 left-0 inline-flex items-center justify-center w-6 h-6 transition-all duration-150 transform scale-110 rounded-full shadow-sm translate-x-0 dark:translate-x-6 text-gray-800 bg-[#fff] dark:bg-[#343749] dark:text-gray-100">
                                 {
@@ -154,7 +157,7 @@ function Header() {
                         className={`absolute flex items-center p-4 bg-[#fff] dark:bg-[#141625] rounded-md shadow-lg top-16 inset-x-4 md:hidden transition duration-300 ease-in-out transform${isMobileSubMenuOpen ? 'opacity-100 translate-y-0 block' : 'opacity-0 -translate-y-full hidden'}`}
                     >
                         <div className="space-x-2">
-                            <button className="relative focus:outline-none" onClick={toggleTheme}>
+                            <button className="relative focus:outline-none" onClick={() => {dispatch(setTheme(!darkMode))}}>
                                 <div className="w-12 h-6 transition rounded-full outline-none bg-[rgba(123,93,249,0.3)] dark:bg-[rgba(123,93,249,1)]"></div>
                                 <div className="absolute top-0 left-0 inline-flex items-center justify-center w-6 h-6 transition-all duration-150 transform scale-110 rounded-full shadow-sm translate-x-0 dark:translate-x-6 text-gray-800 bg-[#fff] dark:bg-[#343749] dark:text-gray-100">
                                 {

@@ -3,29 +3,17 @@ import { useContext, useState } from "react"
 import ThemeContext from "../../contexts/themesContext"
 import imLogo from "../../assets/new-im-logo-white.png"
 import imLogoBlack from "../../assets/new-im-logo-black.png"
-import CheckCircleIcon from "../../icon/CheckCircle"
 import { useDispatch, useSelector } from "react-redux";
-import CircleRotate from "../../icon/CircleRotate"
-import axios from "axios";
+import WifiIcon from "../../icon/WifiIcon"
+import CheckCheckIcon from "../../icon/CheckCheckIcon"
+import CircleOffIcon from "../../icon/CircleOffIcon"
 
-function EmailConfirm() {
+
+function Emailverification() {
+
+    // const{ darkMode, toggleTheme } = useContext(ThemeContext)
 
     const darkMode = useSelector((state) => state.theme.value);
-
-    const emailToSend = sessionStorage.getItem('emailToSend');
-
-    const handleResendEmail = () =>{
-        axios
-        .post("http://127.0.0.1:8000/accounts/resend_email/", {
-            email: `${emailToSend}`,
-        })
-        .then(function (response) {
-            console.log("success");
-        })
-        .catch(function (error) {
-            console.log("erreur !!!");
-        });
-    }
 
     return (
         <>
@@ -45,25 +33,26 @@ function EmailConfirm() {
                                     <div className="mx-auto max-w-xs">
                                         <div className="flex flex-col gap-[1em] items-center">
                                             <span className="text-[#198754]">
-                                                <CheckCircleIcon/>
+                                                <WifiIcon/>
                                             </span>
-                                            <h1 className="text-[1.3em] font-semibold text-center dark:text-gray-100">Felicitation vous avez creer votre compte !</h1>
-                                            <p className="text-center dark:text-gray-100">Un email de confirmation a été envoyé à l'adrèsse <span className="font-medium dark:text-gray-100">{emailToSend}</span>.</p>
-
-                                            <button 
-                                                className="flex items-center gap-[0.3em] text-gray-100 bg-[rgba(123,93,249,0.9)] p-[0.5em] rounded-md font-semibold mt-[1em]"
-                                                onClick={handleResendEmail}
-                                            >
-                                                <CircleRotate/>
-                                                Renvoyer
-                                            </button>
+                                            <h1 className="text-[1.3em] font-semibold text-center dark:text-gray-100">Veuillez patienter, nous verfifions votre identité</h1>
+                                            <p className="dark:text-gray-100 mt-[1em] text-black text-[1.1em] font-semibold">En attente...</p>
+                                            <p className="dark:text-gray-100 mt-[1em] text-black text-[1.1em] font-semibold">Redirection</p>
+                                            <div className="flex items-center gap-[0.5em]">
+                                                <p className="text-center dark:text-gray-100 font-semibold">Verification réussie</p>
+                                                <span className="text-[#198754]"><CheckCheckIcon/></span>
+                                            </div>
+                                            <div className="flex items-center gap-[0.5em]">
+                                                <p className="text-center dark:text-gray-100 font-semibold">Echec de la verification</p>
+                                                <span className="text-[red] dark:text-red-600"><CircleOffIcon/></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="flex-1 bg-[rgba(123,93,249,0.5)] text-center hidden lg:flex">
-                            <div className={`${darkMode?'bg-[url("src/assets/Mailbox-bro.png")]':'bg-[url("src/assets/Mailbox-bro.png")]'} m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat `}>
+                            <div className={`${darkMode?'bg-[url("src/assets/Waiting-bro.png")]':'bg-[url("src/assets/Waiting-bro.png")]'} m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat `}>
                             </div>
                         </div>
                     </div>
@@ -73,4 +62,4 @@ function EmailConfirm() {
     )
 }
 
-export default EmailConfirm
+export default Emailverification
