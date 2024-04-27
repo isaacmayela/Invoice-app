@@ -1,36 +1,55 @@
 import { Link } from "react-router-dom"
-import { useContext, useState } from "react"
-import ThemeContext from "../../contexts/themesContext"
+import { useContext, useState, useEffect } from "react"
 import imLogo from "../../assets/new-im-logo-white.png"
 import imLogoBlack from "../../assets/new-im-logo-black.png"
 import CheckCircleIcon from "../../icon/CheckCircle"
 import { useDispatch, useSelector } from "react-redux";
 import CircleRotate from "../../icon/CircleRotate"
 import axios from "axios";
+import { useForm } from "react-hook-form";
+import SuccessRequestModal from "../../components/modals/successRequestModal"
 
 function EmailConfirm() {
 
     const darkMode = useSelector((state) => state.theme.value);
 
+    const [success, SetSuccess] = useState(false)
+
     const emailToSend = sessionStorage.getItem('emailToSend');
 
-    const handleResendEmail = () =>{
+    const {handleSubmit} = useForm({defaultValues: {email: `${emailToSend}`}});
+
+    const onSubmit = (data) =>{
+        const { email } = data;
         axios
         .post("http://127.0.0.1:8000/accounts/resend_email/", {
-            email: `${emailToSend}`,
+            email: `${email}`,
         })
         .then(function (response) {
-            console.log("success");
+            SetSuccess(true)
         })
         .catch(function (error) {
             console.log("erreur !!!");
         });
     }
 
+    useEffect(() => {
+        if (success) {
+          const timeout = setTimeout(() => {
+            SetSuccess(false);
+          }, 10000);
+    
+          return () => clearTimeout(timeout);
+        }
+    }, [success]);
+
     return (
         <>
             <div className={`${darkMode && "dark"} w-full`}>
                 <div className="min-h-screen text-gray-900 flex justify-center w-[inherit] dark:bg-[#1e213b]">
+
+                    <SuccessRequestModal message={"Email envoyé avec succes !"} isSuccess={success} setSuccess={SetSuccess}/>
+
                     <div className="max-w-screen-xl m-0 sm:m-10 bg-[#fff] shadow sm:rounded-lg flex justify-center flex-1 overflow-hidden dark:bg-[#141625]">
                         <div className="lg:w-1/2 xl:w-5/12 p-5 sm:p-12">
                             <div className='flex items-center justify-center px-2 gap-[1em]'>
@@ -49,10 +68,10 @@ function EmailConfirm() {
                                             </span>
                                             <h1 className="text-[1.3em] font-semibold text-center dark:text-gray-100">Felicitation vous avez creer votre compte !</h1>
                                             <p className="text-center dark:text-gray-100">Un email de confirmation a été envoyé à l'adrèsse <span className="font-medium dark:text-gray-100">{emailToSend}</span>.</p>
-
-                                            <button 
+                                            <button
+                                                // type="submit"
                                                 className="flex items-center gap-[0.3em] text-gray-100 bg-[rgba(123,93,249,0.9)] p-[0.5em] rounded-md font-semibold mt-[1em]"
-                                                onClick={handleResendEmail}
+                                                onClick={handleSubmit(onSubmit)}
                                             >
                                                 <CircleRotate/>
                                                 Renvoyer

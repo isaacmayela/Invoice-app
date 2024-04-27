@@ -5,10 +5,12 @@ import UserRoundIcon from "../../icon/UserRound"
 import SheetIcon from "../../icon/SheetIcon"
 import { Link } from "react-router-dom"
 import CompanyModalForm from "../../components/modals/companyModalForm"
+import { useSelector } from "react-redux";
+import CompanyCard from "../../on_work/Card"
 
 function CompagniesList() {
 
-    const{ darkMode, toggleTheme } = useContext(ThemeContext)
+    const darkMode = useSelector((state) => state.theme.value);
     const [oenCompanyForm, setOpenCompanyForm] = useState(false)
 
     return (
@@ -23,9 +25,16 @@ function CompagniesList() {
             </button>
             <CompanyModalForm isDisplayed={oenCompanyForm} setState={setOpenCompanyForm}/>
         </div>
-        <div class="flex flex-wrap justify-center mt-10">
+        <div class="justify-center mt-10 px-[1em] grid grid-cols-[repeat(3,1fr)]">
 
-            <div class="p-4 w-[25em]">
+            {/* on work */}
+
+                <CompanyCard/>
+                <CompanyCard/>
+                <CompanyCard/>
+            {/* on work */}
+
+            {/* <div class="p-4 w-[25em]">
                 <div class="flex rounded-lg h-full dark:bg-[#141625] bg-white p-8 flex-col shadow-md">
                     <div class="flex items-center mb-3">
                         <div
@@ -62,9 +71,9 @@ function CompagniesList() {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
-            <div class="p-4 w-[25em]">
+            {/* <div class="p-4 w-[25em]">
                 <div class="flex rounded-lg h-full dark:bg-[#141625] bg-white p-8 flex-col shadow-md">
                     <div class="flex items-center mb-3">
                         <div
@@ -100,9 +109,9 @@ function CompagniesList() {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
-            <div class="p-4 w-[25em]">
+            {/* <div class="p-4 w-[25em]">
                 <div class="flex rounded-lg h-full dark:bg-[#141625] bg-white p-8 flex-col shadow-md">
                     <div class="flex items-center mb-3">
                         <div
@@ -138,7 +147,7 @@ function CompagniesList() {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             
 

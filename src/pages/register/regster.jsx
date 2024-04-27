@@ -1,13 +1,15 @@
 import { Link, useNavigate } from "react-router-dom"
 import ErrorMessage from "../../components/ErrorMessage"
 import UserplusIcon from "../../icon/UserplusIcon"
-import { useContext, useState } from "react"
+import { useState, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import imLogo from "../../assets/new-im-logo-white.png"
 import imLogoBlack from "../../assets/new-im-logo-black.png"
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { usernameGenerator } from "../../utils/usefulFeatures"
+import SuccessRequestModal from "../../components/modals/successRequestModal"
+import ErrorRequestModal from "../../components/modals/ErrorRequestModal"
 
 
 function Register() {
@@ -30,6 +32,9 @@ function Register() {
 
     const [isLoading, setIsloading] = useState(false)
 
+    const [success, SetSuccess] = useState(false)
+    const [error, setError] = useState(false)
+
 
     const onSubmit = (data) =>{
         setIsloading(true)
@@ -45,19 +50,38 @@ function Register() {
         })
         .then(function (response) {
             sessionStorage.setItem('emailToSend', response.data.email);
-            handleNavigate()
+            SetSuccess(true)
+            setTimeout(() => {
+                handleNavigate()
+            }, 2000);
         })
         .catch(function (error) {
-            console.log("erreur !!!");
+            setError(true)
         });
         reset();
         setIsloading(false)
     }
 
+    useEffect(() => {
+        if (error) {
+          const timeout = setTimeout(() => {
+            setError(false);
+          }, 10000);
+    
+          return () => clearTimeout(timeout);
+        }
+    }, [error]);
+
     return (
         <>
+
             <div className={`${darkMode && "dark"} w-full`}>
                 <div className="min-h-screen text-gray-900 flex justify-center w-[inherit] dark:bg-[#1e213b]">
+
+                    <SuccessRequestModal message={"Vos informations ont été enregistrés avec succès. Redirection en cours..."} isSuccess={success} setSuccess={SetSuccess}/>
+                    
+                    <ErrorRequestModal message={"Une erreur s'est produite lors de l'envoi des données !"} isError={error} setError={setError}/>
+
                     <div className="max-w-screen-xl m-0 sm:m-10 bg-[#fff] shadow sm:rounded-lg flex justify-center flex-1 overflow-hidden dark:bg-[#141625]">
                         <div className="lg:w-1/2 xl:w-5/12 p-5 sm:p-12">
                             <div className='flex items-center justify-center px-2 gap-[1em]'>

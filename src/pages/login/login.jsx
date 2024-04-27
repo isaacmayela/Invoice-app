@@ -3,14 +3,17 @@ import imLogo from "../../assets/new-im-logo-white.png"
 import imLogoBlack from "../../assets/new-im-logo-black.png"
 import GoogleIcon from '../../icon/GoogleIcon';
 import UserplusIcon from '../../icon/UserplusIcon';
-import { useContext, useState } from 'react';
-import ThemeContext from '../../contexts/themesContext';
+import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { LoginEmailValidators, LoginPasswordValidators } from '../../utils/usefulFeatures';
 import ErrorMessage from '../../components/ErrorMessage';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setUserData } from '../../redux/slice/UserSlice';
+import SuccessRequestModal from '../../components/modals/successRequestModal';
+import ErrorRequestModal from '../../components/modals/ErrorRequestModal';
+import TabletLogindark from "../../assets/Tabletlogin-bro.png"
+import TabletLoginlight from "../../assets/Tabletlogin-rafiki.png"
 
 function Login() {
 
@@ -25,6 +28,9 @@ function Login() {
     const dispatch = useDispatch();
 
     const [isLoading, setIsloading] = useState(false)
+
+    const [success, SetSuccess] = useState(false)
+    const [error, setError] = useState(false)
 
     const [formData, setFormData] = useState({
         email: "",
@@ -44,24 +50,45 @@ function Login() {
         .then(function (response) {
             if (response.status === 200) {
 
+                SetSuccess(true)
+
                 dispatch(setUserData(response.data.user))
                 dispatch(setToken(response.data.token))
 
-                console.log("user Data to endpoint", response.data);
+                sessionStorage.removeItem('emailToSend');
+
+                console.log(response.data);
+
+                setTimeout(() => {
+                    handleNavigate()
+                }, 2000);
             }
         })
         .catch(function (error) {
-            console.log("erreur !!!");
+            setError(true)
         });
         reset();
-        // handleNavigate()
         setIsloading(false)
     }
+
+    useEffect(() => {
+        if (error) {
+          const timeout = setTimeout(() => {
+            setError(false);
+          }, 10000);
+    
+          return () => clearTimeout(timeout);
+        }
+    }, [error]);
 
     return (
         <>
             <div className={`${darkMode && "dark"} w-full`}>
                 <div className="min-h-screen text-gray-900 flex justify-center w-[inherit] dark:bg-[#1e213b]">
+                    <SuccessRequestModal message={"Connexion reussie. Redirection en cours..."} isSuccess={success} setSuccess={SetSuccess}/>
+                    
+                    <ErrorRequestModal message={"Adrèsse mail ou mot de passe incorte !"} isError={error} setError={setError}/>
+
                     <div className="max-w-screen-xl m-0 sm:m-10 bg-[#fff] shadow sm:rounded-lg flex justify-center flex-1 overflow-hidden dark:bg-[#141625]">
                         <div className="lg:w-1/2 xl:w-5/12 p-5 sm:p-12">
                             <div className='flex items-center justify-center px-2 gap-[1em]'>
@@ -139,7 +166,7 @@ function Login() {
                             </div>
                         </div>
                         <div className="flex-1 bg-[rgba(123,93,249,0.5)] text-center hidden lg:flex">
-                            <div className={`${darkMode?'bg-[url("src/assets/Tabletlogin-bro.png")]':'bg-[url("src/assets/Tabletlogin-rafiki.png")]'} m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat `}> {/* "src/assets/Tabletlogin-bro.png"  dark mode */}
+                            <div className={`m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat `} style={darkMode?{ backgroundImage: `url(${TabletLogindark})` } : { backgroundImage: `url(${TabletLoginlight})` }}>
                             </div>
                         </div>
                     </div>

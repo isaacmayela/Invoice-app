@@ -36,7 +36,7 @@ function App() {
                   <Route path="/" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/email-confirm" element={<EmailConfirm />} />
-                  <Route path="/email-verification" element={<Emailverification />} />
+                  <Route path="/email-verification/:token" element={<Emailverification />} />
                   <Route path="/forgotPassword" element={<ForgotPassword />} />
                   <Route path="/changePassword" element={<ChangePassword />} />
                   <Route path='*' element={<PageNotFound />}/>
