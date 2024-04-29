@@ -79,7 +79,8 @@ import storage from 'redux-persist/lib/storage'
 import storageSession from 'redux-persist/lib/storage/session'
 
 const rootPersistConfig = { key: 'mode', storage,}; 
-const authPersistConfig = { key: 'user', storage:storageSession }; 
+// const authPersistConfig = { key: 'user', storage:storageSession }; 
+const authPersistConfig = { key: 'user', storage }; 
 const rootReducer = combineReducers({ 
     user: persistReducer(authPersistConfig,UserReducer),
     theme: ThemeReducer,

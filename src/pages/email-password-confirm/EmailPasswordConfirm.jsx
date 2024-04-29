@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom"
+import { useContext, useState, useEffect } from "react"
 import imLogo from "../../assets/new-im-logo-white.png"
 import imLogoBlack from "../../assets/new-im-logo-black.png"
 import CheckCircleIcon from "../../icon/CheckCircle"
 import { useDispatch, useSelector } from "react-redux";
 import { CircleArrowLeft } from "lucide-react"
+import SendMailDark from "../../assets/SentMessage-bro.png"
+import SendMailLight from "../../assets/SentMessage-bro.png"
 
-function EmailConfirm() {
+function EmailPasswordConfirm() {
 
     const navigate = useNavigate()
 
@@ -16,6 +19,7 @@ function EmailConfirm() {
     const darkMode = useSelector((state) => state.theme.value);
 
     const emailToSend = sessionStorage.getItem('emailToSend');
+    console.log(emailToSend);
 
     return (
         <>
@@ -35,11 +39,8 @@ function EmailConfirm() {
                                 <div className="w-full flex-1 mt-6">
                                     <div className="mx-auto max-w-xs">
                                         <div className="flex flex-col gap-[1em] items-center">
-                                            <span className="text-[#198754]">
-                                                <CheckCircleIcon/>
-                                            </span>
-                                            <h1 className="text-[1.3em] font-semibold text-center dark:text-gray-100">Felicitation vous avez creer votre compte !</h1>
-                                            <p className="text-center dark:text-gray-100">Un email de confirmation vous a été envoyé. Veuillez activer votre compte<span className="font-medium dark:text-gray-100">{emailToSend}</span>.</p>
+                                            <h1 className="text-[1.3em] font-semibold text-center dark:text-gray-100">Reini</h1>
+                                            <p className="text-center dark:text-gray-100">Un email de confirmation a été envoyé à l'adrèsse <span className="font-medium dark:text-gray-100">{emailToSend}</span>.</p>
                                             <button
                                                 // type="submit"
                                                 className="flex items-center gap-[0.3em] text-gray-100 bg-[rgba(123,93,249,0.9)] p-[0.5em] rounded-md font-semibold mt-[1em]"
@@ -55,7 +56,7 @@ function EmailConfirm() {
                             </div>
                         </div>
                         <div className="flex-1 bg-[rgba(123,93,249,0.5)] text-center hidden lg:flex">
-                            <div className={`${darkMode?'bg-[url("src/assets/Mailbox-bro.png")]':'bg-[url("src/assets/Mailbox-bro.png")]'} m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat `}>
+                            <div className={`m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat `} style={darkMode?{ backgroundImage: `url(${SendMailDark})` } : { backgroundImage: `url(${SendMailLight})` }}>
                             </div>
                         </div>
                     </div>
@@ -65,4 +66,4 @@ function EmailConfirm() {
     )
 }
 
-export default EmailConfirm
+export default EmailPasswordConfirm

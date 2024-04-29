@@ -9,11 +9,12 @@ import { LoginEmailValidators, LoginPasswordValidators } from '../../utils/usefu
 import ErrorMessage from '../../components/ErrorMessage';
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { setToken, setUserData } from '../../redux/slice/UserSlice';
+import { setAccessToken, setRefreshToken } from '../../redux/slice/UserSlice';
 import SuccessRequestModal from '../../components/modals/successRequestModal';
 import ErrorRequestModal from '../../components/modals/ErrorRequestModal';
 import TabletLogindark from "../../assets/Tabletlogin-bro.png"
 import TabletLoginlight from "../../assets/Tabletlogin-rafiki.png"
+import { axiosInstance } from '../../config/axiosInstance';
 
 function Login() {
 
@@ -42,8 +43,9 @@ function Login() {
     const onSubmit = (data) =>{
         setIsloading(true)
         const { email, password } = data;
-        axios
-        .post("http://127.0.0.1:8000/accounts/login/", {
+
+        axiosInstance
+        .post("accounts/login/", {
             email: `${email}`,
             password: `${password}`,
         })
@@ -52,12 +54,9 @@ function Login() {
 
                 SetSuccess(true)
 
-                dispatch(setUserData(response.data.user))
-                dispatch(setToken(response.data.token))
+                dispatch(setAccessToken(response.data.access))
 
-                sessionStorage.removeItem('emailToSend');
-
-                console.log(response.data);
+                dispatch(setRefreshToken(response.data.refresh))
 
                 setTimeout(() => {
                     handleNavigate()
@@ -69,6 +68,7 @@ function Login() {
         });
         reset();
         setIsloading(false)
+        sessionStorage.removeItem('emailToSend');
     }
 
     useEffect(() => {
@@ -87,7 +87,7 @@ function Login() {
                 <div className="min-h-screen text-gray-900 flex justify-center w-[inherit] dark:bg-[#1e213b]">
                     <SuccessRequestModal message={"Connexion reussie. Redirection en cours..."} isSuccess={success} setSuccess={SetSuccess}/>
                     
-                    <ErrorRequestModal message={"Adrèsse mail ou mot de passe incorte !"} isError={error} setError={setError}/>
+                    <ErrorRequestModal message={"Adrèsse mail ou mot de passe incorecte !"} isError={error} setError={setError}/>
 
                     <div className="max-w-screen-xl m-0 sm:m-10 bg-[#fff] shadow sm:rounded-lg flex justify-center flex-1 overflow-hidden dark:bg-[#141625]">
                         <div className="lg:w-1/2 xl:w-5/12 p-5 sm:p-12">
@@ -142,7 +142,7 @@ function Login() {
                                             <ErrorMessage message={errors.password ? errors.password.message: ""}/>
 
                                             <div className='flex justify-end text-[rgba(123,93,249,0.9)] mt-[1em] text-[0.9em] font-semibold'>
-                                                <Link className='hover:underline'>
+                                                <Link className='hover:underline' to={"/forgotPassword"}>
                                                     Mot de passe oublié ?
                                                 </Link>
                                             </div>

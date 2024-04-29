@@ -19,9 +19,13 @@ import { store, persistor } from "./redux/store/store";
 import { PersistGate } from 'redux-persist/integration/react'
 import PageNotFound from './pages/pageNotFound/page404'
 import Emailverification from './pages/email-verification/emailVerification'
+import EmailConfirmPrivateRoute from './private-root/PrivateEmailConfirm'
+import Anonymous from './private-root/AnonymousRoot'
+import EmailPasswordConfirm from './pages/email-password-confirm/EmailPasswordConfirm'
 
 function App() {
-  // localStorage.removeItem('theme');
+  sessionStorage.removeItem('user');
+  localStorage.removeItem('mode');
 
   const isAuthenticated = true
 
@@ -32,13 +36,39 @@ function App() {
           <PersistGate loading={null} persistor={persistor}>
             <div className='w-full bg-[#f5f6ff] flex justify-center items-center overflow-hidden'>
               <Router>
-                <Routes>             
-                  <Route path="/" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/email-confirm" element={<EmailConfirm />} />
-                  <Route path="/email-verification/:token" element={<Emailverification />} />
-                  <Route path="/forgotPassword" element={<ForgotPassword />} />
-                  <Route path="/changePassword" element={<ChangePassword />} />
+                <Routes>      
+                  <Route element={<Anonymous />}>
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/email-verification/:token" element={<Emailverification />} />
+                    <Route path="/forgotPassword" element={<ForgotPassword />} />
+                    <Route path="/changePassword/:token" element={<ChangePassword />} />
+                    <Route path="/email-confirm" element={<EmailConfirm />} />
+                    <Route
+                      path="/email-password-confirm" element={
+                        <EmailConfirmPrivateRoute>
+                          <EmailPasswordConfirm />
+                        </EmailConfirmPrivateRoute>
+                      }
+                    />
+                  </Route>       
+                  {/* <Route path="/" element={<Login />} /> */}
+                  {/* <Route
+                    path="/login" element={
+                      <LoginPrivateRoute>
+                        <Login />
+                      </LoginPrivateRoute>
+                    }
+                  />
+                  <Route path="/register" element={<Register />} /> */}
+                  {/* <Route
+                    path="/email-confirm" element={
+                      <EmailConfirmPrivateRoute>
+                        <EmailConfirm />
+                      </EmailConfirmPrivateRoute>
+                    }
+                  /> */}
+                  
                   <Route path='*' element={<PageNotFound />}/>
                   <Route path="/" element={<PrivateWrapper isAuthenticated={isAuthenticated} />}>
                     <Route path='/home' element={<Home/>} />

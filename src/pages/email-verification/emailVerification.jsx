@@ -8,39 +8,59 @@ import WifiIcon from "../../icon/WifiIcon"
 import CheckCheckIcon from "../../icon/CheckCheckIcon"
 import CircleOffIcon from "../../icon/CircleOffIcon"
 import waitingBro from "../../assets/Waiting-bro.png"
-import axios from "axios"
+import { axiosInstance } from "../../config/axiosInstance"
 
 
 function Emailverification() {
 
     const {token} = useParams();
 
-    const navigate = useNavigate()
+    const navigateLogin = useNavigate()
+    const navigatePassword = useNavigate()
 
     const [isLoading, setIsloading] = useState(false)
     const [succes, setSuccess] = useState(false)
     const [error, setError] = useState(false)
 
-    const handleNavigate = () =>{
-        navigate("/")
+    const handleNavigateLogin = () =>{
+        navigateLogin("/login")
+    }
+
+    const handleNavigatePassword = () =>{
+        navigatePassword("/changePassword")
     }
 
     useEffect(() => {
         setIsloading(true)
-        axios
-        .post(`http://127.0.0.1:8000/accounts/email_confirm/${token}/`, {})
+        axiosInstance
+        .post(`accounts/email_confirm/${token}/`, {})
         .then(function (response) {
-            setIsloading(false)
-            setSuccess(true)
-            setTimeout(() => {
-                handleNavigate()
-            }, 3000);
+            console.log(response.status);
+            if (response.status === 200) {
+                setError(false)
+                setIsloading(false)
+                setSuccess(true)
+
+                setTimeout(() => {
+                    handleNavigateLogin()
+                    // if (response.data.key === "verification") {
+                    //     console.log(response.data.key);
+                    //     handleNavigatePassword()
+                    // }else if (response.data.key === "activation") {
+                    //     console.log(response.data.key);
+                    //     handleNavigateLogin()
+                    // }
+    
+                }, 3000);
+
+            }
         })
         .catch(function (error) {
+            setSuccess(false)
             setIsloading(false)
             setError(true)
             setTimeout(() => {
-                handleNavigate()
+                handleNavigateLogin()
             }, 3000);
         });
 

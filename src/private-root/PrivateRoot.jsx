@@ -5,15 +5,14 @@ import { useSelector } from "react-redux";
 
 
 function PrivateWrapper() {
-    const isAuthenticateds = useSelector((state) => state.user.isAuthenticated);
-    console.log(isAuthenticateds);
+    const isAuthenticateds = useSelector((state) => state.user.access);
  
     const isAuthenticated = true
 
   return (
     <>
       {
-        isAuthenticated ? <Layout /> : <Navigate to="/login" />
+        isAuthenticateds ? <Layout /> : <Navigate to="/login" />
       }
     </>
   )

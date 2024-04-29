@@ -11,15 +11,35 @@ import Header from './Header';
 import Loader from '../common/Loader';
 import SearchPanel from './SearchPanel';
 import SearchPanelContext from '../contexts/searchpanelContext';
-import { useSelector } from "react-redux";
-
+import { jwtDecode } from "jwt-decode";
+import refreshToken from '../config/tokenRefres';
+import { useDispatch, useSelector } from "react-redux";
 
 function Layout() {
 
     const darkMode = useSelector((state) => state.theme.value);
 
-    const userDatas = useSelector((state) => state.user.userData);
-    console.log(userDatas);
+    const refresh = useSelector((state) => state.user.refresh);
+    const dispatch = useDispatch();
+
+    const accessToken = useSelector((state) => state.user.access);
+    const decoded = jwtDecode(accessToken);
+    // console.log(accessToken);
+
+    const [loadingToken, setLoadingToken ] = useState(true)
+
+    useEffect(() => {
+    
+        let interval = setInterval(() => {
+            if (accessToken) {
+                refreshToken(dispatch, refresh)
+            }
+        }, 300000);
+        
+        // const interval = setInterval(refreshToken, 300000); // Rafraîchir toutes les 5 minutes 300000
+        return () => clearInterval(interval);
+    }, [accessToken, loadingToken]);
+
 
     const [loading, setLoading] = useState(true);
     const [isSearchPanleMenu, setIsSearchPanleMenu] = useState(false);

@@ -6,10 +6,9 @@ import { useForm } from "react-hook-form"
 import imLogo from "../../assets/new-im-logo-white.png"
 import imLogoBlack from "../../assets/new-im-logo-black.png"
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { usernameGenerator } from "../../utils/usefulFeatures"
 import SuccessRequestModal from "../../components/modals/successRequestModal"
 import ErrorRequestModal from "../../components/modals/ErrorRequestModal"
+import { axiosInstance } from "../../config/axiosInstance"
 
 
 function Register() {
@@ -40,16 +39,14 @@ function Register() {
         setIsloading(true)
         const { first_name, last_name, email, password } = data;
 
-        axios
-        .post("http://127.0.0.1:8000/accounts/register/", {
-            username:  `${usernameGenerator(first_name)}`,
+        axiosInstance
+        .post("accounts/register/", {
             first_name: `${first_name}`,
             last_name: `${last_name}`,
             email: `${email}`,
             password: `${password}`,
         })
         .then(function (response) {
-            sessionStorage.setItem('emailToSend', response.data.email);
             SetSuccess(true)
             setTimeout(() => {
                 handleNavigate()

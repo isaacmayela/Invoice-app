@@ -119,7 +119,7 @@ function CompanyCard() {
         <>
             
             <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-[#141625] p-4 md:p-6">
-                <div class="flex justify-between border-b border-gray-200 dark:border-gray-700">
+                <div class="flex justify-between pb-4 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex items-center dark:text-white">
                         <div class="w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center me-3">
                             <Building2 size={"18"}/>
