@@ -74,7 +74,7 @@ function App() {
                     <Route path='/home' element={<Home/>} />
                     <Route path='/profile' element={<Profile/>} />
                     <Route path='/company-list' element={<CompagniesList/>} />
-                    <Route path='/company/details' element={<Company/>} />
+                    <Route path='/company/:name/details' element={<Company/>} />
                     {/* <Route path='/statitics' element={<Company/>} /> */}
                   </Route>
                   <Route path='/invoice' element={<InvoiceDetail/>}/>

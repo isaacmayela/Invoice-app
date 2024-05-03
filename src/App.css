@@ -21,4 +21,22 @@
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #a995fa;
   }
+
+  .generalScrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .generalScrollbar::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background: #CFCFCF;
+  }
+
+  .generalScrollbar::-webkit-scrollbar-thumb {
+    background: #969696;
+    border-radius: 6px;
+  }
+
+  .generalScrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a995fa;
+  }
 }

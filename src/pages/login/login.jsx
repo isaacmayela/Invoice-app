@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { LoginEmailValidators, LoginPasswordValidators } from '../../utils/usefulFeatures';
 import ErrorMessage from '../../components/ErrorMessage';
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setAccessToken, setRefreshToken } from '../../redux/slice/UserSlice';
 import SuccessRequestModal from '../../components/modals/successRequestModal';
@@ -57,6 +56,8 @@ function Login() {
                 dispatch(setAccessToken(response.data.access))
 
                 dispatch(setRefreshToken(response.data.refresh))
+
+                localStorage.setItem('lastRefreshTime', Date.now());
 
                 setTimeout(() => {
                     handleNavigate()

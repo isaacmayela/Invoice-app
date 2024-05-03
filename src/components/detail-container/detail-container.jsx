@@ -1,6 +1,5 @@
-import './detail-container.css'
 import PriceDetails from '../price-detail/price-detail'
-import { useContext } from 'react'
+import { useContext, useParams } from 'react'
 import ThemeContext from '../../contexts/themesContext'
 import imLogo from "../../assets/new-im-logo-white.png"
 import imLogoBlack from "../../assets/new-im-logo-black.png"
@@ -14,8 +13,8 @@ function DetailContainer() {
         <div className="bg-white dark:bg-[#141625] rounded-md shadow-md">
             <div className='flex items-center justify-between py-[1em] px-[1.5em] sm:flex-row flex-col gap-[1em]'>
                 <div className='flex items-center gap-[1em] sm:justify-start justify-center'>
-                    <img src={ darkMode?imLogo:imLogoBlack } alt="invoice manager logo" className='w-12 h-12'/>{/*imLogog dark mode */}
-                    <div className='font-bold text-[1em] text-[black] leading-[1em] dark:text-white'> {/* text-fff dark */}
+                    <img src={ darkMode?imLogo:imLogoBlack } alt="invoice manager logo" className='w-12 h-12'/>
+                    <div className='font-bold text-[1em] text-[black] leading-[1em] dark:text-white'>
                         <h1>INVOICE</h1>
                         <h1>MANAGER</h1>
                     </div>

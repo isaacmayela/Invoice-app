@@ -10,38 +10,12 @@ import ErrorRequestModal from "./ErrorRequestModal";
 import { X } from "lucide-react"
 
 
-function CompanyModalForm({isDisplayed, setState, companies, setCompanies}) {
+function InvoiceModalForm({isDisplayed, setState, companies, setCompanies}) {
 
     const [isLoading, setIsloading] = useState(false)
 
     const [success, SetSuccess] = useState(false)
     const [error, setError] = useState(false)
-
-
-    let countryData = Country.getAllCountries();
-    const [stateData, setStateData] = useState();
-    const [cityData, setCityData] = useState();
-
-    const [country, setCountry] = useState(countryData[0]);
-    const [state, setStates] = useState();
-    const [city, setCity] = useState();
-
-    useEffect(() => {
-      setStateData(State.getStatesOfCountry(country?.isoCode));
-    }, [country]);
-
-    useEffect(() => {
-      setCityData(City.getCitiesOfState(country?.isoCode, state?.isoCode));
-    }, [state]);
-
-    useEffect(() => {
-      stateData && setStates(stateData[0]);
-    }, [stateData]);
-
-    useEffect(() => {
-      cityData && setCity(cityData[0]);
-    }, [cityData]);
-
 
     const [formData, setFormData] = useState({
         name: "",
@@ -59,14 +33,7 @@ function CompanyModalForm({isDisplayed, setState, companies, setCompanies}) {
 
         axiosInstance
         .post("company/informations/", {
-            name: `${name}`,
-            email: `${email}`,
-            phone: `${phone}`,
-            adress: `${adress}`,
-            country: `${country.name}`,
-            city: `${city.name}`,
-            state: `${state.name}`,
-            services: `${services}`
+ 
             })
         .then(function (response) {
             console.log(response);
@@ -152,24 +119,6 @@ function CompanyModalForm({isDisplayed, setState, companies, setCompanies}) {
                                 <ErrorMessage message={errors.phone ? errors.phone.message: ""}/>
                             </div>
 
-                            <div>
-                                <label className="text-gray-900 dark:text-gray-200 font-medium" for="city">Pays</label>
-                                <Selector data={countryData} selected={country} setSelected={setCountry}
-                                />
-                            </div>
-                            {state && (
-                                <div className="mb-4">
-                                    <label className="text-gray-900 dark:text-gray-200 font-medium" for="city">Province</label>
-                                    <Selector data={stateData} selected={state} setSelected={setStates}/>
-                                </div>
-                            )}
-                                                                
-                            {city && (
-                                <div className="mb-4">
-                                    <label className="text-gray-900 dark:text-gray-200 font-medium" for="city">Ville</label>
-                                    <Selector data={cityData} selected={city} setSelected={setCity} />
-                                </div>
-                            )}
                         </div>
 
                         <div className="grid grid-cols-1 mt-4">
@@ -214,49 +163,9 @@ function CompanyModalForm({isDisplayed, setState, companies, setCompanies}) {
                     </form>
                 </section>
 
-
-
-
-
-                {/* <div className="mx-auto shadow-xl rounded-md bg-white max-w-md">
-
-                    <div className="flex justify-end p-2">
-                        <button onClick={()=>{setState(false)}}
-                            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center">
-                            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div class="p-6 pt-0 text-center">
-                        <svg className="w-20 h-20 text-red-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <h3 className="text-xl font-normal text-gray-500 mt-5 mb-6">Are you sure you want to delete this user?</h3>
-                        <button 
-                            className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-base inline-flex items-center px-3 py-2.5 text-center mr-2"
-                            onClick={()=>{setState(false)}}
-                        >
-                            Ajouter
-                        </button>
-
-                        <button 
-                            className="text-gray-900 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-cyan-200 border border-gray-200 font-medium inline-flex items-center rounded-lg text-base px-3 py-2.5 text-center"
-                            onClick={()=>{setState(false)}}
-                        >
-                            Annuler
-                        </button>
-                    </div>
-
-                </div> */}
             </div>
         </>
     )
 }
 
-export default CompanyModalForm
+export default InvoiceModalForm

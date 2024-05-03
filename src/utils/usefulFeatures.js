@@ -22,6 +22,32 @@ export function LoginPasswordValidators() {
     return validations
 }
 
+export function CompanyFieldsValidators() {
+    const validations = {
+        required: "Ce champ est requis",
+        maxLength:{
+            value: 50,
+            message: "Ce champ ne dépasse pas 250 caractères"
+        }
+    }
+
+    return validations
+}
+
+export function ActivitiesValidators() {
+    const validations = {
+        required: "Ce champ est requis",
+        maxLength:{
+            value: 300,
+            message: "Ce champ ne dépasse pas 250 caractères"
+        }
+    }
+
+    return validations
+}
+
+
+
 export function usernameGenerator(first_name) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+';
     let randomString = '';

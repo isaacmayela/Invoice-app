@@ -23,11 +23,32 @@ import SearchPanelContext from "../contexts/searchpanelContext"
 import SimpleUserTwoIcon from "../icon/SimpleUser2"
 import { useDispatch, useSelector } from "react-redux";
 import { setTheme } from "../redux/slice/ThemeSlice"
+import { axiosInstance } from "../config/axiosInstance"
+import { setAccessToken } from "../redux/slice/UserSlice"
  
 function Header() {
 
     const darkMode = useSelector((state) => state.theme.value);
     const dispatch = useDispatch();
+    const refresh = useSelector((state) => state.user.refresh);
+    const [isLoading, setIsloading] = useState(false)
+
+    const onSubmit = () =>{
+        setIsloading(true)
+
+        axiosInstance
+        .post("accounts/logout/", {
+            refresh: `${refresh}`
+        })
+        .then(function (response) {
+            dispatch(setAccessToken(""))
+        })
+        .catch(function (error) {
+        });
+
+        setIsloading(false)
+    }
+
 
     const{ isSearchPanleMenu, setIsSearchPanleMenu } = useContext(SearchPanelContext)
 
@@ -55,6 +76,8 @@ function Header() {
     function onUserMobileMenuOpen() {
         setiIsUserMobileMenu(!isUserMobileMenu)
     }
+
+
 
     return (
         <>
@@ -143,10 +166,10 @@ function Header() {
                                         <ProfileSettingsIcon/>
                                         Paramètres
                                     </Link>
-                                    <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={()=>{setiIsUserMenu(false)}}>
+                                    <button disabled = {isLoading} className="w-full block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={onSubmit}>
                                         <LogoutIcon/>
                                         Deconnexion
-                                    </Link>
+                                    </button>
                                 </div>
                             </CSSTransition>
                         </div>
@@ -207,10 +230,10 @@ function Header() {
                                     <ProfileSettingsIcon/>
                                     Paramètres
                                 </Link>
-                                <Link to={"#"} className="block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={()=>{setiIsUserMobileMenu(false); setIsMobileSubMenuOpen(false)}}>
+                                <button className="w-full block px-4 py-2 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-[rgba(123,93,249,0.5)] flex items-center gap-[0.5em]" onClick={onSubmit}>
                                     <LogoutIcon/>
                                     Deconnexion
-                                </Link>
+                                </button>
                             </div>
 
                         </div>
