@@ -26,6 +26,8 @@ function Layout() {
 
     const [access, setAccess] = useState(accessToken)
 
+    console.log(access);
+
     const [ raf, setRaf] = useState("nonraf")
 
     console.log(raf);
@@ -94,7 +96,7 @@ function Layout() {
                         const newAccessToken = response.data.access;
                         dispatch(setAccessToken(newAccessToken))
                         setRaf("rafecece")
-                        // setAccess(newAccessToken)
+                        setAccess(newAccessToken)
                         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                         return axiosInstance(originalRequest);
                         } catch (refreshError) {
