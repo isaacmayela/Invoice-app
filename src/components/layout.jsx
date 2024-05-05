@@ -24,17 +24,17 @@ function Layout() {
 
     // console.log(accessToken);
 
-    axiosInstance.interceptors.request.use(
-        (config) => {
-          if (accessToken) {
-            config.headers.Authorization = `Bearer ${accessToken}`;
-          }
-          return config;
-        },
-        (error) => {
-          return Promise.reject(error);
-        }
-    );
+    // axiosInstance.interceptors.request.use(
+    //     (config) => {
+    //       if (accessToken) {
+    //         config.headers.Authorization = `Bearer ${accessToken}`;
+    //       }
+    //       return config;
+    //     },
+    //     (error) => {
+    //       return Promise.reject(error);
+    //     }
+    // );
 
     const decoded = jwtDecode(accessToken);
 
@@ -80,6 +80,7 @@ function Layout() {
       
             if (error.response) {
                 const { status } = error.response;
+                console.log(error.response);
                 if (status === 401) {
                     if (refresh) {
                         try {
