@@ -26,16 +26,16 @@ function Layout() {
 
     const [access, setAccess] = useState(accessToken)
 
-    console.log(access);
-
     const [ raf, setRaf] = useState("nonraf")
 
     console.log(raf);
 
+    console.log(access);
+
     axiosInstance.interceptors.request.use(
         (config) => {
           if (accessToken) {
-            config.headers.Authorization = `Bearer ${access}`;
+            config.headers.Authorization = `Bearer ${accessToken}`;
           }
           return config;
         },
@@ -96,7 +96,7 @@ function Layout() {
                         const newAccessToken = response.data.access;
                         dispatch(setAccessToken(newAccessToken))
                         setRaf("rafecece")
-                        setAccess(newAccessToken)
+                        setAccess(newAccessToken + "ppppppppppppp")
                         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                         return axiosInstance(originalRequest);
                         } catch (refreshError) {
