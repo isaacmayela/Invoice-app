@@ -21,12 +21,14 @@ function Layout() {
     const dispatch = useDispatch();
 
     const accessToken = useSelector((state) => state.user.access);
+    
+    console.log(accessToken);
 
     const [access, setAccess] = useState(accessToken)
 
     const [ raf, setRaf] = useState("nonraf")
 
-    // console.log(accessToken);
+    console.log(raf);
 
     axiosInstance.interceptors.request.use(
         (config) => {
@@ -91,6 +93,7 @@ function Layout() {
                         const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
                         const newAccessToken = response.data.access;
                         dispatch(setAccessToken(newAccessToken))
+                        setRaf("rafecece")
                         // setAccess(newAccessToken)
                         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                         return axiosInstance(originalRequest);
