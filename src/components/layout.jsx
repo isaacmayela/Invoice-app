@@ -24,17 +24,17 @@ function Layout() {
 
     // console.log(accessToken);
 
-    // axiosInstance.interceptors.request.use(
-    //     (config) => {
-    //       if (accessToken) {
-    //         config.headers.Authorization = `Bearer ${accessToken}`;
-    //       }
-    //       return config;
-    //     },
-    //     (error) => {
-    //       return Promise.reject(error);
-    //     }
-    // );
+    axiosInstance.interceptors.request.use(
+        (config) => {
+          if (accessToken) {
+            config.headers.Authorization = `Bearer ${accessToken}`;
+          }
+          return config;
+        },
+        (error) => {
+          return Promise.reject(error);
+        }
+    );
 
     const decoded = jwtDecode(accessToken);
 
@@ -86,7 +86,7 @@ function Layout() {
                         const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
                         const newAccessToken = response.data.access;
                         dispatch(setAccessToken(newAccessToken))
-                        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+                        // originalRequest.headers.Authorization = `Bearer ${accessToken}`;
                         return axiosInstance(originalRequest);
                         } catch (refreshError) {
                             dispatch(setAccessToken(""))
