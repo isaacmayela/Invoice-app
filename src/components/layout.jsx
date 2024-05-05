@@ -35,7 +35,7 @@ function Layout() {
     axiosInstance.interceptors.request.use(
         (config) => {
           if (accessToken) {
-            config.headers.Authorization = `Bearer ${accessToken}`;
+            config.headers.Authorization = `Bearer ${access}`;
           }
           return config;
         },
