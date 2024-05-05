@@ -24,12 +24,14 @@ function Layout() {
 
     const [access, setAccess] = useState(accessToken)
 
+    const [ raf, setRaf] = useState("nonraf")
+
     // console.log(accessToken);
 
     axiosInstance.interceptors.request.use(
         (config) => {
           if (accessToken) {
-            config.headers.Authorization = `Bearer ${access}`;
+            config.headers.Authorization = `Bearer ${accessToken}`;
           }
           return config;
         },
@@ -89,8 +91,8 @@ function Layout() {
                         const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
                         const newAccessToken = response.data.access;
                         dispatch(setAccessToken(newAccessToken))
-                        setAccess(newAccessToken)
-                        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+                        // setAccess(newAccessToken)
+                        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                         return axiosInstance(originalRequest);
                         } catch (refreshError) {
                             dispatch(setAccessToken(""))
@@ -107,7 +109,7 @@ function Layout() {
                 return Promise.reject(error);
             } else {
                 setError(true)
-                setMessage("Une erreur s'est produite lors de l'envoi de la requtte !")
+                setMessage("Une erreur s'est produite lors de l'envoi de la requette !")
                 return Promise.reject(error);
             }
         }
