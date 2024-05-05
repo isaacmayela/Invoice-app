@@ -79,9 +79,9 @@ function Layout() {
             const originalRequest = error.config;
       
             if (error.response) {
-                const { status } = error.response;
+                const { data } = error.response;
                 console.log(error.response);
-                if (status === 401) {
+                if (data.code === 'token_not_valid') {
                     if (refresh) {
                         try {
                         const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
