@@ -71,8 +71,6 @@ function Layout() {
                         const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
                         const newAccessToken = response.data.access;
                         dispatch(setAccessToken(newAccessToken))
-                        setRaf("rafecece")
-                        setAccess("")
                         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                         return axiosInstance(originalRequest);
                         } catch (refreshError) {

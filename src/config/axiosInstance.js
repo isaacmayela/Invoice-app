@@ -21,4 +21,9 @@ export const axiosInstance = axios.create({
 });
 
 
-  
+window.addEventListener('storage', (event) => {
+  if (event.key === 'persist:user') {
+    const newAccessToken = event.newValue.access;
+    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
+  }
+});
