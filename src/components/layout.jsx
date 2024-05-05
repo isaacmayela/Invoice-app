@@ -50,6 +50,28 @@ function Layout() {
     //     }
     // );
 
+    const useAxiosInterceptor = () => {
+        const accessToken = useSelector((state) => state.user.access);
+    
+        useEffect(() => {
+            const interceptor = axiosInstance.interceptors.request.use(
+                (config) => {
+                    config.headers.Authorization = `Bearer ${accessToken}`;
+                    return config;
+                },
+                (error) => {
+                    return Promise.reject(error);
+                }
+            );
+    
+            return () => {
+                axiosInstance.interceptors.request.eject(interceptor);
+            };
+        }, [accessToken]);
+    };
+
+    useAxiosInterceptor()
+
     const decoded = jwtDecode(accessToken);
 
     const [ error, setError ] = useState(false)
