@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_SERVER_URL = import.meta.env.VITE_BASE_SERVER_URL;
 
-const storedData = localStorage.getItem('persist:root');
+const storedData = localStorage.getItem('persist:user');
 
 const userDatas = JSON.parse(storedData)
 
