@@ -73,7 +73,8 @@ function Layout() {
 
     axiosInstance.interceptors.response.use(
         async (response) => {
-          return response;
+            response.headers.Authorization = `Bearer ${accessToken}`;
+            return response;
         },
         async (error) => {
             const originalRequest = error.config;
