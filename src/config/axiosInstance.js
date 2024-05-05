@@ -6,7 +6,7 @@ const storedData = localStorage.getItem('persist:user');
 
 const userDatas = JSON.parse(storedData)
 
-const accessToken = userDatas.access
+const accessToken = storedData.access
 
 console.log(accessToken);
 
