@@ -10,6 +10,8 @@ import { jwtDecode } from "jwt-decode";
 import refreshToken from '../config/tokenRefres';
 import { useDispatch, useSelector } from "react-redux";
 import { axiosInstance } from '../config/axiosInstance';
+import { setAccessToken } from '../redux/slice/UserSlice';
+import ErrorRequestModal from './modals/ErrorRequestModal';
 
 function Layout() {
 
@@ -22,17 +24,17 @@ function Layout() {
 
     // console.log(accessToken);
 
-    axiosInstance.interceptors.request.use(
-        (config) => {
-          if (accessToken) {
-            config.headers.Authorization = `Bearer ${accessToken}`;
-          }
-          return config;
-        },
-        (error) => {
-          return Promise.reject(error);
-        }
-    );
+    // axiosInstance.interceptors.request.use(
+    //     (config) => {
+    //       if (accessToken) {
+    //         config.headers.Authorization = `Bearer ${accessToken}`;
+    //       }
+    //       return config;
+    //     },
+    //     (error) => {
+    //       return Promise.reject(error);
+    //     }
+    // );
 
     const decoded = jwtDecode(accessToken);
 
@@ -52,21 +54,70 @@ function Layout() {
 
 
 
-    useEffect(() => {
-        const lastRefreshTime = localStorage.getItem('lastRefreshTime');
+    // useEffect(() => {
+    //     const lastRefreshTime = localStorage.getItem('lastRefreshTime');
     
-        if (accessToken) {
-            const timeSinceLastRefresh = Date.now() - lastRefreshTime;
-            const timeToNextRefresh = 300000 - timeSinceLastRefresh;
-            // Si le temps écoulé depuis le dernier rafraîchissement est inférieur à 5 minutes,
-            // on attend le reste du délai avant de rafraîchir à nouveau le token
-            const timeout = timeToNextRefresh > 0 ? timeToNextRefresh : 0;
-            const interval = setInterval(refreshToken(dispatch, refresh), timeout);
-            return () => clearInterval(interval);
+    //     if (accessToken) {
+    //         const timeSinceLastRefresh = Date.now() - lastRefreshTime;
+    //         const timeToNextRefresh = 300000 - timeSinceLastRefresh;
+    //         // Si le temps écoulé depuis le dernier rafraîchissement est inférieur à 5 minutes,
+    //         // on attend le reste du délai avant de rafraîchir à nouveau le token
+    //         const timeout = timeToNextRefresh > 0 ? timeToNextRefresh : 0;
+    //         const interval = setInterval(refreshToken(dispatch, refresh), timeout);
+    //         return () => clearInterval(interval);
+    //     }
+    // }, []);
+
+    const [ error, setError ] = useState(false)
+    const [ message, setMessage ] = useState("")
+
+    axiosInstance.interceptors.response.use(
+        async (response) => {
+          return response;
+        },
+        async (error) => {
+            const originalRequest = error.config;
+      
+            if (error.response) {
+                const { status } = error.response;
+                if (status === 401) {
+                    if (refresh) {
+                        try {
+                        const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
+                        const newAccessToken = response.data.access;
+                        dispatch(setAccessToken(newAccessToken))
+                        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+                        return axiosInstance(originalRequest);
+                        } catch (refreshError) {
+                            dispatch(setAccessToken(""))
+                            return Promise.reject(refreshError);
+                        }
+                    } else {
+                        dispatch(setAccessToken(""))
+                        return Promise.reject(error);
+                    }
+                }
+            } else if (error.request) {
+                setError(true)
+                setMessage("Erreur de connection veuillez réessayer !")
+                return Promise.reject(error);
+            } else {
+                setError(true)
+                setMessage("Une erreur s'est produite lors de l'envoi de la requtte !")
+                return Promise.reject(error);
+            }
         }
-    }, []);
+    );
 
-
+    useEffect(() => {
+        if (error) {
+          const timeout = setTimeout(() => {
+            setError(false);
+          }, 10000);
+    
+          return () => clearTimeout(timeout);
+        }
+    }, [error]);
 
     const [loading, setLoading] = useState(true);
     const [isSearchPanleMenu, setIsSearchPanleMenu] = useState(false);
@@ -97,6 +148,7 @@ function Layout() {
                     ) : (
                     <SearchPanelContext.Provider value={{isSearchPanleMenu, setIsSearchPanleMenu}}>
                         <div className='flex h-screen w-[inherit] antialiased dark:bg-[#1e213b]'>
+                            <ErrorRequestModal message={message} isError={error} setError={setError}/>
                             <LoadingBar color='rgba(123,93,249,1)' progress={progress} onLoaderFinished={()=>{setProgress(0)}}/>
                             <Sidebar />
                             <div className='flex-1 h-full overflow-x-hidden overflow-y-auto generalScrollbar'>
