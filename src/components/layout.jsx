@@ -66,7 +66,6 @@ function Layout() {
                 const { status } = error.response;
                 console.log(error.response);
                 if (status === 403) {
-                    console.log("j'entre");
                     if (refresh) {
                         try {
                         const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
