@@ -1,4 +1,4 @@
-import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
+import { Outlet, Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import LoadingBar from 'react-top-loading-bar';
 import Sidebar from './Sidebar';
@@ -16,6 +16,12 @@ import ErrorRequestModal from './modals/ErrorRequestModal';
 function Layout() {
 
     const darkMode = useSelector((state) => state.theme.value);
+
+    const navigate = useNavigate()
+
+    const handleNavigate = () =>{
+        navigate("/login")
+    }
 
     const refresh = useSelector((state) => state.user.refresh);
     const dispatch = useDispatch();
@@ -57,9 +63,10 @@ function Layout() {
             const originalRequest = error.config;
       
             if (error.response) {
-                const { data } = error.response;
+                const { status } = error.response;
                 console.log(error.response);
-                if (data.code === 'token_not_valid') {
+                if (status === 403) {
+                    console.log("j'entre");
                     if (refresh) {
                         try {
                         const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
