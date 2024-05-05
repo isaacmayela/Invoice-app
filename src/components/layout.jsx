@@ -22,12 +22,14 @@ function Layout() {
 
     const accessToken = useSelector((state) => state.user.access);
 
+    const [access, setAccess] = useState(accessToken)
+
     // console.log(accessToken);
 
     axiosInstance.interceptors.request.use(
         (config) => {
           if (accessToken) {
-            config.headers.Authorization = `Bearer ${accessToken}`;
+            config.headers.Authorization = `Bearer ${access}`;
           }
           return config;
         },
@@ -87,6 +89,7 @@ function Layout() {
                         const response = await axiosInstance.post("core/token/refresh/", { refresh: refresh });
                         const newAccessToken = response.data.access;
                         dispatch(setAccessToken(newAccessToken))
+                        setAccess(newAccessToken)
                         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
                         return axiosInstance(originalRequest);
                         } catch (refreshError) {
