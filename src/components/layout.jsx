@@ -34,9 +34,9 @@ function Layout() {
 
     axiosInstance.interceptors.request.use(
         (config) => {
-          if (accessToken) {
+        //   if (accessToken) {
             config.headers.Authorization = `Bearer ${access}`;
-          }
+        //   }
           return config;
         },
         (error) => {
@@ -96,7 +96,7 @@ function Layout() {
                         const newAccessToken = response.data.access;
                         dispatch(setAccessToken(newAccessToken))
                         setRaf("rafecece")
-                        setAccess(newAccessToken)
+                        setAccess("")
                         originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
                         return axiosInstance(originalRequest);
                         } catch (refreshError) {
