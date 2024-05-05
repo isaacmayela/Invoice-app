@@ -8,7 +8,7 @@ const userDatas = JSON.parse(storedData)
 
 const accessToken = userDatas.access
 
-console.log(accessToken + "PPPPPPPPPPPP");
+console.log(accessToken);
 
 
 export const axiosInstance = axios.create({
