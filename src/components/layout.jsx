@@ -32,49 +32,19 @@ function Layout() {
 
     console.log(access);
 
-    axiosInstance.interceptors.request.use(
-        (config) => {
-        //   if (accessToken) {
-            config.headers.Authorization = `Bearer ${access}`;
-        //   }
-          return config;
-        },
-        (error) => {
-          return Promise.reject(error);
-        }
-    );
+    // axiosInstance.interceptors.request.use(
+    //     (config) => {
+    //     //   if (accessToken) {
+    //         config.headers.Authorization = `Bearer ${access}`;
+    //     //   }
+    //       return config;
+    //     },
+    //     (error) => {
+    //       return Promise.reject(error);
+    //     }
+    // );
 
     const decoded = jwtDecode(accessToken);
-
-    const [loadingToken, setLoadingToken ] = useState(true)
-
-    // useEffect(() => {
-
-    //     const interval = setInterval(() => {
-    //         if (refresh) {
-    //             getRefreshToken();
-    //         }
-    //     }, 300000);
-    //     ref.current = interval
-    //     return () => clearInterval(interval);
-
-    // }, []);
-
-
-
-    // useEffect(() => {
-    //     const lastRefreshTime = localStorage.getItem('lastRefreshTime');
-    
-    //     if (accessToken) {
-    //         const timeSinceLastRefresh = Date.now() - lastRefreshTime;
-    //         const timeToNextRefresh = 300000 - timeSinceLastRefresh;
-    //         // Si le temps écoulé depuis le dernier rafraîchissement est inférieur à 5 minutes,
-    //         // on attend le reste du délai avant de rafraîchir à nouveau le token
-    //         const timeout = timeToNextRefresh > 0 ? timeToNextRefresh : 0;
-    //         const interval = setInterval(refreshToken(dispatch, refresh), timeout);
-    //         return () => clearInterval(interval);
-    //     }
-    // }, []);
 
     const [ error, setError ] = useState(false)
     const [ message, setMessage ] = useState("")
