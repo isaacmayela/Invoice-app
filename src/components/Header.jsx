@@ -26,7 +26,7 @@ import { setTheme } from "../redux/slice/ThemeSlice"
 import { axiosInstance } from "../config/axiosInstance"
 import { setAccessToken } from "../redux/slice/UserSlice"
  
-function Header() {
+function Header({user_type}) {
 
     const darkMode = useSelector((state) => state.theme.value);
     const dispatch = useDispatch();
@@ -241,18 +241,23 @@ function Header() {
                 {/* Mobile main-menu */}
                 <div className={`border-b border-b-[#7b5df9] md:hidden ${isMobileMainMenuOpen ? 'block' : 'hidden'}`}>
                     <nav className="px-2 py-4 space-y-2">
-                    <div>
-                            <NavLink to={"/home"}  className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
-                                <span><HomeIcon/></span>
-                                <span>Accueil</span>
-                            </NavLink>
-                        </div>
-                        <div>
-                            <NavLink  to={"/statitics"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
-                                <span><ChartIcon/></span>
-                                <span>Statistiques</span>
-                            </NavLink>
-                        </div>
+                        {
+                            user_type === "administrator" &&
+                            <>
+                                <div>
+                                    <NavLink to={"/home"}  className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
+                                        <span><HomeIcon/></span>
+                                        <span>Accueil</span>
+                                    </NavLink>
+                                </div>
+                                <div>
+                                    <NavLink  to={"/statitics"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
+                                        <span><ChartIcon/></span>
+                                        <span>Statistiques</span>
+                                    </NavLink>
+                                </div>
+                            </>
+                        }
                         <div>
                             <NavLink  to={"/company-list"} className={({ isActive }) =>isActive ? "bg-[rgba(123,93,249,0.5)] dark:bg-[rgba(123,93,249,0.7)] dark:text-gray-100 rounded-md flex items-center gap-2 mt-[0.7em] text-light p-2 text-gray-900" : " p-2 flex items-center gap-2 mt-[0.7em] text-light text-gray-900 dark:text-gray-100 hover:bg-[rgba(123,93,249,0.5)] dark:hover:bg-[rgba(123,93,249,0.7)] rounded-md"} onClick={()=>{setIsMobileMainMenuOpen(false)}}>
                                 <span><ComponentIcon/></span>

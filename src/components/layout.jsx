@@ -125,6 +125,10 @@ function Layout() {
 
     const { user_type, attachement, id_number, email, last_name, first_name} = decoded
 
+    console.log(decoded);
+
+    console.log(user_type);
+
     return (
         <>
             <div className={`${darkMode && "dark"} w-full`}>
@@ -138,7 +142,7 @@ function Layout() {
                             <LoadingBar color='rgba(123,93,249,1)' progress={progress} onLoaderFinished={()=>{setProgress(0)}}/>
                             <Sidebar user_type={user_type}/>
                             <div className='flex-1 h-full overflow-x-hidden overflow-y-auto generalScrollbar'>
-                                <Header />
+                                <Header user_type={user_type}/>
                                 <main>
                                     <Outlet/>
                                 </main>
