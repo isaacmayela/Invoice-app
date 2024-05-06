@@ -203,7 +203,7 @@ function HomeDashboard() {
                     {/* donut chart */}
 
                     <div>
-                        <ChartThree/>
+                        <ChartThree invoiceList={invoices}/>
                     </div>
                 </div>
             </div>

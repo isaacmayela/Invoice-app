@@ -121,9 +121,9 @@ function Header({user_type}) {
                             <BellIcon/>
                         </button>
                         <button
-                            onClick={()=>{
-                                setIsSearchPanleMenu(true)
-                            }}
+                            // onClick={()=>{
+                            //     setIsSearchPanleMenu(true)
+                            // }}
                             className="p-2 transition-colors duration-200 rounded-full text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] focus:outline-none focus:bg-primary-100 focus:ring-primary-darker dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]">
                             <span className="sr-only">Open Search panel</span>
                             <SearchIcon/>
@@ -195,7 +195,7 @@ function Header({user_type}) {
                                 <BellIcon/>
                             </button>
                             <button
-                                onClick={()=>{setIsSearchPanleMenu(true)}}
+                                // onClick={()=>{setIsSearchPanleMenu(true)}}
                                 className="p-2 transition-colors duration-200 rounded-full text-[#383b53] bg-[#f5f6ff] hover:text-[#26293f] hover:bg-[#e8e9f3] focus:outline-none focus:bg-primary-100 focus:ring-primary-darker dark:text-[rgba(123,93,249,1)] dark:bg-[#26293f] dark:hover:text-gray-100 dark:hover:bg-[rgba(123,93,249,0.5)]">
                                 <span className="sr-only">Open Search panel</span>
                                 <SearchIcon/>

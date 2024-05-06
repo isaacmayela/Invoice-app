@@ -1,59 +1,110 @@
 import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { compterPaidFalseEtTrue } from '../../statistiques/chartThreeDiagrams';
 
-const options = {
-  chart: {
-    fontFamily: 'Satoshi, sans-serif',
-    type: 'donut',
-  },
-  colors: ['#8566fa', '#7152e8', '#5e3fd6'],
-  labels: ['Payée', 'En cours', 'En projet'],
-  legend: {
-    show: false,
-    position: 'bottom',
-  },
+// const options = {
+//   chart: {
+//     fontFamily: 'Satoshi, sans-serif',
+//     type: 'donut',
+//   },
+//   colors: ['#8566fa', '#7152e8', '#5e3fd6'],
+//   labels: ['Payée', 'En cours', 'En projet'],
+//   legend: {
+//     show: false,
+//     position: 'bottom',
+//   },
 
-  plotOptions: {
-    pie: {
-      donut: {
-        size: '55%',
-        background: 'transparent',
-      },
+//   plotOptions: {
+//     pie: {
+//       donut: {
+//         size: '55%',
+//         background: 'transparent',
+//       },
+//     },
+//   },
+//   dataLabels: {
+//     enabled: false,
+//   },
+//   responsive: [
+//     {
+//       breakpoint: 2600,
+//       options: {
+//         chart: {
+//           width: 300,
+//         },
+//       },
+//     },
+//     {
+//       breakpoint: 640,
+//       options: {
+//         chart: {
+//           width: 200,
+//         },
+//       },
+//     },
+//   ],
+// };
+
+const ChartThree = ({invoiceList}) => {
+
+  const InvoicesList = [...invoiceList]
+
+  const options = {
+    chart: {
+      fontFamily: 'Satoshi, sans-serif',
+      type: 'donut',
     },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  responsive: [
-    {
-      breakpoint: 2600,
-      options: {
-        chart: {
-          width: 300,
+    colors: ['#5e3fd6', '#6577F3'],
+    labels: ['Payée', 'Non Payée'],
+    legend: {
+      show: false,
+      position: 'bottom',
+    },
+  
+    plotOptions: {
+      pie: {
+        donut: {
+          size: '55%',
+          background: 'transparent',
         },
       },
     },
-    {
-      breakpoint: 640,
-      options: {
-        chart: {
-          width: 200,
+    dataLabels: {
+      enabled: false,
+    },
+    responsive: [
+      {
+        breakpoint: 2600,
+        options: {
+          chart: {
+            width: 300,
+          },
         },
       },
-    },
-  ],
-};
+      {
+        breakpoint: 640,
+        options: {
+          chart: {
+            width: 200,
+          },
+        },
+      },
+    ],
+  };
 
-const ChartThree = () => {
+  const compterPaid = compterPaidFalseEtTrue(InvoicesList)
+
+  console.log(compterPaid);
+
   const [state, setState] = useState({
-    series: [54, 27, 19],
+    series: compterPaid,
   });
 
   const handleReset = () => {
     setState((prevState) => ({
       ...prevState,
-      series: [54, 27, 19],
+      series: compterPaid,
     }));
   };
   handleReset;
@@ -81,10 +132,10 @@ const ChartThree = () => {
         <div className="-mx-8 flex flex-wrap items-center justify-center gap-y-3">
             <div className="sm:w-1/2 w-full px-8">
                 <div className="flex w-full items-center">
-                    <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-primary"></span>
+                    <span className="mr-2 block h-3 w-full max-w-3 rounded-full  bg-[#5e3fd6]"></span>
                     <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-                    <span> Desktop </span>
-                    <span> 65% </span>
+                    <span> Payées </span>
+                    <span> {compterPaid[0]}% </span>
                     </p>
                 </div>
             </div>
@@ -92,17 +143,8 @@ const ChartThree = () => {
                 <div className="flex w-full items-center">
                     <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
                     <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-                    <span> Tablet </span>
-                    <span> 34% </span>
-                    </p>
-                </div>
-            </div>
-            <div className="sm:w-1/2 w-full px-8">
-                <div className="flex w-full items-center">
-                    <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
-                    <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-                    <span> Mobile </span>
-                    <span> 45% </span>
+                    <span> Impayées </span>
+                    <span> {compterPaid[1]}% </span>
                     </p>
                 </div>
             </div>
