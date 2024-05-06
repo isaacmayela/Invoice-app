@@ -11,7 +11,11 @@ function HomeDashboard() {
     const [clients, setClients] = useState([])
     const [compagnies, setCompagnies] = useState([])
 
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(false)
+
     useEffect(() => {
+        setIsLoading(true)
         axiosInstance
           .get("accounts/get_collaborators/")
     
@@ -50,8 +54,11 @@ function HomeDashboard() {
           })
     
           .catch(function (error) {
+            console.log("errr");
         });
+        setIsLoading(false)
     }, [])
+
 
     return (
         <>
@@ -191,7 +198,7 @@ function HomeDashboard() {
                 {/* on work */}
                 <div class="grid grid-cols-1 p-4 space-y-8 lg:gap-8 lg:space-y-0 lg:grid-cols-3">
                     {/* line chart */}
-                    <RecentIvoices invoiceList = {invoices}/>
+                    <RecentIvoices invoiceList = {invoices} isLoading={isLoading}/>
 
                     {/* donut chart */}
 

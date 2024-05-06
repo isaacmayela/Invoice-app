@@ -125,10 +125,6 @@ function Layout() {
 
     const { user_type, attachement, id_number, email, last_name, first_name} = decoded
 
-    console.log(decoded);
-
-    console.log(user_type);
-
     return (
         <>
             <div className={`${darkMode && "dark"} w-full`}>

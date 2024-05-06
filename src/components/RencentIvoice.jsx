@@ -1,10 +1,13 @@
 import { getRencentInvoices, formaterDate } from "../utils/usefulFeatures"
+import ThreePointspinner from "./loaders/ThreePointSpinner"
+import InvoiceEmptyState from "./EmptyState/InvoiceEmptyState"
 
-function RecentIvoices({invoices}) {
+function RecentIvoices({invoiceList, isLoading}) {
 
-    const InvoicesList = [...invoices]
+    const InvoicesList = [...invoiceList]
 
     const recentInvoicesList = getRencentInvoices(InvoicesList)
+
 
     return (
         <>
@@ -28,6 +31,16 @@ function RecentIvoices({invoices}) {
                 <div className="px-[1em]">
 
                     {
+                        isLoading ? 
+                        <div className="h-[7em] flex justify-center pt-[2em]">
+                            <ThreePointspinner/>
+                        </div>
+                        :
+                        recentInvoicesList.length === 0 ?
+                        <div className="py-[3em] flex justify-center">
+                            <InvoiceEmptyState/>
+                        </div>
+                        :
                         recentInvoicesList.map((invoiceInfos, index) =>(
                             <div className={`flex items-center justify-between pt-[0.8em] mb-[1em] ${index !==0 && 'border-t dark:border-[#383b54]'}`} key={index}>
                                 <div className="flex items-center gap-[0.5em]">
@@ -44,6 +57,7 @@ function RecentIvoices({invoices}) {
                         ))
                     }
                 </div>
+
             </div>
         </>
     )
