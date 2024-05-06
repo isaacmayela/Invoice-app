@@ -1,6 +1,10 @@
-function RecentIvoices() {
+import { getRencentInvoices, formaterDate } from "../utils/usefulFeatures"
 
-    const recentInvoicesNumber = [1,2,3,4,5,6,7,8,9,10]
+function RecentIvoices({invoices}) {
+
+    const InvoicesList = [...invoices]
+
+    const recentInvoicesList = getRencentInvoices(InvoicesList)
 
     return (
         <>
@@ -24,17 +28,17 @@ function RecentIvoices() {
                 <div className="px-[1em]">
 
                     {
-                        recentInvoicesNumber.map((invoiceInfos, index) =>(
+                        recentInvoicesList.map((invoiceInfos, index) =>(
                             <div className={`flex items-center justify-between pt-[0.8em] mb-[1em] ${index !==0 && 'border-t dark:border-[#383b54]'}`} key={index}>
                                 <div className="flex items-center gap-[0.5em]">
                                     <i className="fas fa-file-invoice text-[0.9em] dark:text-gray-100"></i>
-                                    <p className="text-[0.9em] dark:text-gray-100">Maquettage d'un site web de deux pages</p>
+                                    <p className="text-[0.9em] dark:text-gray-100">{invoiceInfos.concern}</p>
                                 </div>
                                 <div className="flex items-center gap-[0.5em]">
-                                    <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                                        Payée
+                                    <span className={`inline-flex px-2 text-xs font-semibold leading-5 text-green-800 ${invoiceInfos.paid ? "bg-green-100" :"bg-red-100"} rounded-full`}>
+                                        { invoiceInfos.paid ? "Payée" :"Impayée"}
                                     </span>
-                                    <p className="text-[0.9em] dark:text-gray-100 hidden md:block">3 fév</p>
+                                    <p className="text-[0.9em] dark:text-gray-100 hidden md:block">{formaterDate(invoiceInfos.invoice_date_time)}</p>
                                 </div>
                             </div>
                         ))

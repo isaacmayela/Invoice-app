@@ -57,3 +57,15 @@ export function usernameGenerator(first_name) {
     const username = first_name + "-" + randomString
     return username;
 }
+
+export function getRencentInvoices(array) {
+    const newArray = [...array]
+    newArray.sort((a, b) => new Date(b.invoice_date_time) - new Date(a.invoice_date_time));
+    return newArray.slice(0, 10);
+}
+
+
+export function formaterDate(date) {
+    const options = { day: 'numeric', month: 'short' };
+    return new Date(date).toLocaleDateString('fr-FR', options);
+}
