@@ -56,7 +56,7 @@ function App() {
                   </Route>      
 
                   <Route path='*' element={<PageNotFound />}/>
-                  <Route path="/home" element={<PrivateWrapper isAuthenticated={isAuthenticated} />}>
+                  <Route path="/" element={<PrivateWrapper isAuthenticated={isAuthenticated} />}>
 
                     <Route element={<AdministratorPrivateRoot/>}>
                       <Route path='/home' element={<Home/>} />
