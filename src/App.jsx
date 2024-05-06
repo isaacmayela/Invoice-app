@@ -22,6 +22,8 @@ import Emailverification from './pages/email-verification/emailVerification'
 import EmailConfirmPrivateRoute from './private-root/PrivateEmailConfirm'
 import Anonymous from './private-root/AnonymousRoot'
 import EmailPasswordConfirm from './pages/email-password-confirm/EmailPasswordConfirm'
+import AdministratorPrivateRoot from './private-root/AdministratoRoute'
+import Statistics from './components/statistics/Statistics'
 
 function App() {
   sessionStorage.removeItem('user');
@@ -51,31 +53,21 @@ function App() {
                         </EmailConfirmPrivateRoute>
                       }
                     />
-                  </Route>       
-                  {/* <Route path="/" element={<Login />} /> */}
-                  {/* <Route
-                    path="/login" element={
-                      <LoginPrivateRoute>
-                        <Login />
-                      </LoginPrivateRoute>
-                    }
-                  />
-                  <Route path="/register" element={<Register />} /> */}
-                  {/* <Route
-                    path="/email-confirm" element={
-                      <EmailConfirmPrivateRoute>
-                        <EmailConfirm />
-                      </EmailConfirmPrivateRoute>
-                    }
-                  /> */}
-                  
+                  </Route>      
+
                   <Route path='*' element={<PageNotFound />}/>
-                  <Route path="/" element={<PrivateWrapper isAuthenticated={isAuthenticated} />}>
-                    <Route path='/home' element={<Home/>} />
+                  <Route path="/home" element={<PrivateWrapper isAuthenticated={isAuthenticated} />}>
+
+                    <Route element={<AdministratorPrivateRoot/>}>
+                      <Route path='/home' element={<Home/>} />
+                      <Route path='/statitics' element={<Statistics/>} />
+                    </Route>  
+
+
+                    {/* <Route path='/home' element={<Home/>} /> */}
                     <Route path='/profile' element={<Profile/>} />
                     <Route path='/company-list' element={<CompagniesList/>} />
                     <Route path='/company/:name/details' element={<Company/>} />
-                    {/* <Route path='/statitics' element={<Company/>} /> */}
                   </Route>
                   <Route path='/invoice' element={<InvoiceDetail/>}/>
                 </Routes>

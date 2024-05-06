@@ -27,28 +27,6 @@ function Layout() {
     const dispatch = useDispatch();
 
     const accessToken = useSelector((state) => state.user.access);
-    
-    console.log(accessToken);
-
-    const [access, setAccess] = useState(accessToken)
-
-    const [ raf, setRaf] = useState("nonraf")
-
-    console.log(raf);
-
-    console.log(access);
-
-    // axiosInstance.interceptors.request.use(
-    //     (config) => {
-    //     //   if (accessToken) {
-    //         config.headers.Authorization = `Bearer ${access}`;
-    //     //   }
-    //       return config;
-    //     },
-    //     (error) => {
-    //       return Promise.reject(error);
-    //     }
-    // );
 
     const useAxiosInterceptor = () => {
         const accessToken = useSelector((state) => state.user.access);
@@ -72,8 +50,6 @@ function Layout() {
 
     useAxiosInterceptor()
 
-    const decoded = jwtDecode(accessToken);
-
     const [ error, setError ] = useState(false)
     const [ message, setMessage ] = useState("")
 
@@ -86,7 +62,6 @@ function Layout() {
       
             if (error.response) {
                 const { status } = error.response;
-                console.log(error.response);
                 if (status === 403) {
                     if (refresh) {
                         try {
@@ -146,6 +121,10 @@ function Layout() {
         }, 2000);
     }, []);
 
+    const decoded = jwtDecode(accessToken);
+
+    const { user_type, attachement, id_number, email, last_name, first_name} = decoded
+
     return (
         <>
             <div className={`${darkMode && "dark"} w-full`}>
@@ -157,7 +136,7 @@ function Layout() {
                         <div className='flex h-screen w-[inherit] antialiased dark:bg-[#1e213b]'>
                             <ErrorRequestModal message={message} isError={error} setError={setError}/>
                             <LoadingBar color='rgba(123,93,249,1)' progress={progress} onLoaderFinished={()=>{setProgress(0)}}/>
-                            <Sidebar />
+                            <Sidebar user_type={user_type}/>
                             <div className='flex-1 h-full overflow-x-hidden overflow-y-auto generalScrollbar'>
                                 <Header />
                                 <main>

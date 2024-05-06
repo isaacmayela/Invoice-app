@@ -1,8 +1,56 @@
 import { motion } from "framer-motion";
 import ChartThree from "../chart/donutChart";
 import RecentIvoices from "../RencentIvoice";
+import { useState, useEffect } from "react";
 
 function HomeDashboard() {
+
+    const [collaborators, setCollaborators] = useState([])
+    const [invoices, setInvoices] = useState([])
+    const [clients, setClients] = useState([])
+    const [compagnies, setCompagnies] = useState([])
+
+    useEffect(() => {
+        axiosInstance
+          .get("accounts/get_collaborators/")
+    
+          .then(function (response) {
+            setCollaborators(...[response.data]);
+          })
+    
+          .catch(function (error) {
+        });
+
+        axiosInstance
+          .get("company/informations/")
+    
+          .then(function (response) {
+            setCompagnies(...[response.data]);
+          })
+    
+          .catch(function (error) {
+        });
+
+        axiosInstance
+          .get("company/customers/")
+    
+          .then(function (response) {
+            setClients(...[response.data]);
+          })
+    
+          .catch(function (error) {
+        });
+
+        axiosInstance
+          .get("company/all_invoices/")
+    
+          .then(function (response) {
+            setInvoices(...[response.data]);
+          })
+    
+          .catch(function (error) {
+        });
+    }, [])
 
     return (
         <>
@@ -21,9 +69,9 @@ function HomeDashboard() {
                             >
                             Factures
                             </h6>
-                            <span className="text-xl font-semibold dark:text-gray-300">30,000</span>
+                            <span className="text-xl font-semibold dark:text-gray-300">{invoices.length}</span>
                             <span className="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +4.4%
+                            +0%
                             </span>
                         </div>
                         <div>
@@ -52,9 +100,9 @@ function HomeDashboard() {
                             >
                             Clients
                             </h6>
-                            <span className="text-xl font-semibold dark:text-gray-300">$30,000</span>
+                            <span className="text-xl font-semibold dark:text-gray-300">{clients.length}</span>
                             <span className="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +4.4%
+                            +%
                             </span>
                         </div>
                         <div>
@@ -83,9 +131,9 @@ function HomeDashboard() {
                             >
                             Collaborateurs
                             </h6>
-                            <span className="text-xl font-semibold dark:text-gray-300">$30,000</span>
+                            <span className="text-xl font-semibold dark:text-gray-300">{collaborators.length}</span>
                             <span className="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +4.4%
+                            +0%
                             </span>
                         </div>
                         <div>
@@ -112,11 +160,11 @@ function HomeDashboard() {
                             <h6
                             class="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light"
                             >
-                            Value
+                            Compagnie
                             </h6>
-                            <span class="text-xl font-semibold dark:text-gray-300">$30,000</span>
+                            <span class="text-xl font-semibold dark:text-gray-300">{compagnies.length}</span>
                             <span class="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +4.4%
+                            +0%
                             </span>
                         </div>
                         <div>
