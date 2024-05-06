@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import ChartThree from "../chart/donutChart";
 import RecentIvoices from "../RencentIvoice";
 import { useState, useEffect } from "react";
+import { axiosInstance } from "../../config/axiosInstance";
 
 function HomeDashboard() {
 
