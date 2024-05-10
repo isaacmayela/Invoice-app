@@ -14,9 +14,6 @@ function CompagniesList() {
 
   const [ companies, setCompanies] = useState([])
 
-  console.log(companies);
-
-
   useEffect(() => {
     axiosInstance
       .get("company/informations/")
@@ -27,7 +24,7 @@ function CompagniesList() {
 
       .catch(function (error) {
     });
-  }, [])
+  }, [oenCompanyForm])
 
 
 
@@ -52,7 +49,7 @@ function CompagniesList() {
         {
           companies.map((company) => (
             <CompanyCard pk={company.pk} name={company.name} email={company.email} phone={company.phone}
-              adress={company.adress} country={company.country} city={company.city} services={company.services}
+              adress={company.adress} country={company.country} city={company.city} services={company.services} id_number={company.id_number}
             />
           ))
         }   

@@ -95,16 +95,16 @@ const ChartThree = ({invoiceList}) => {
 
   const compterPaid = compterPaidFalseEtTrue(InvoicesList)
 
-  console.log(compterPaid);
+  // console.log(compterPaid);
 
   const [state, setState] = useState({
-    series: compterPaid,
+    series:  [57, 43],
   });
 
   const handleReset = () => {
     setState((prevState) => ({
       ...prevState,
-      series: compterPaid,
+      series: [57, 43],
     }));
   };
   handleReset;

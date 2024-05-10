@@ -38,7 +38,7 @@ function RecentIvoices({invoiceList, isLoading}) {
                         :
                         recentInvoicesList.length === 0 ?
                         <div className="py-[3em] flex justify-center">
-                            <InvoiceEmptyState/>
+                            <InvoiceEmptyState title={"Aucune facture recente"} description={"Commencez par ajouter une compagnie et y ajouter des factures."} data={""} url={""}/>
                         </div>
                         :
                         recentInvoicesList.map((invoiceInfos, index) =>(

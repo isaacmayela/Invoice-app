@@ -69,3 +69,17 @@ export function formaterDate(date) {
     const options = { day: 'numeric', month: 'short' };
     return new Date(date).toLocaleDateString('fr-FR', options);
 }
+
+export function formaterDateISO(dateISO) {
+    const mois = [
+      'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+      'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+    ];
+    
+    const dateObj = new Date(dateISO);
+    const jour = dateObj.getDate();
+    const moisIndex = dateObj.getMonth();
+    const annee = dateObj.getFullYear();
+  
+    return `${jour < 10 ? '0' + jour : jour} ${mois[moisIndex]} ${annee}`;
+}

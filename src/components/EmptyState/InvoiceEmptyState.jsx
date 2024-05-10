@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react"
 
-function InvoiceEmptyState() {
+function InvoiceEmptyState({title, description, url, data}) {
 
   return (
     <>
@@ -23,13 +23,10 @@ function InvoiceEmptyState() {
                 <circle cx="50.4633" cy="23.5641" r="1.02564" fill="#4F46E5" />
             </svg>
             <div>
-                <h2 className="text-center text-black dark:text-gray-100 text-base font-semibold leading-relaxed pb-1">Aucune facture recente</h2>
-                <p className="text-center text-black dark:text-gray-100 text-sm font-normal leading-snug pb-4">Commencer par ajouter<br />une facture </p>
+                <h2 className="text-center text-black dark:text-gray-100 text-base font-semibold leading-relaxed pb-1">{title}</h2>
+                <p className="text-center text-black dark:text-gray-100 text-sm font-normal leading-snug pb-4">{description}</p>
                 <div className="flex gap-3 justify-center">
-                    {/* <button className="w-full px-3 py-2 rounded-full border border-gray-300 text-gray-900 text-xs font-semibold leading-4"> Clear Filter </button>
-                    <button className="w-full px-3 py-2 bg-indigo-600 hover:bg-indigo-700 transition-all duration-500 rounded-full text-white text-xs font-semibold leading-4"> Change Filter </button> */}
                     <button className="flex items-center px-4 py-2 text-sm text-white rounded-md bg-[rgba(123,93,249,0.7)] rgba(123,93,249,0.7)] hover:bg-[rgba(123,93,249,0.9)] focus:outline-none font-semibold sm:block hidden">
-                        {/* <Plus /> */}
                         Ajouter
                     </button>
                 </div>

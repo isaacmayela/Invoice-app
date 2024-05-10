@@ -162,7 +162,7 @@ function InvoiceForm() {
                 </div>
 
                 <div className="form-actions">
-                    <button className="btn-blue"onClick={addInputGroup}><i className="fa-solid fa-plus"></i> Add New Item</button>
+                    <button className="btn-blue" onClick={addInputGroup}><i className="fa-solid fa-plus"></i> Add New Item</button>
                     <div className="save-container">
                         <button className="btn-white" onClick={handleHideForm}>Cancel</button>
                         <button className="btn-violet" type="submit">Save Changes</button>

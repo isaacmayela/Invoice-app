@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import SuccessRequestModal from "../../components/modals/successRequestModal"
 import ErrorRequestModal from "../../components/modals/ErrorRequestModal"
 import { axiosInstance } from "../../config/axiosInstance"
+import registerLight from "../../assets/Signup-rafiki.png"
+import registerDark from "../../assets/Signup-bro.png"
 
 
 function Register() {
@@ -148,7 +150,7 @@ function Register() {
                             </div>
                         </div>
                         <div className="flex-1 bg-[rgba(123,93,249,0.5)] text-center hidden lg:flex">
-                            <div className={`${darkMode?'bg-[url("src/assets/Signup-bro.png")]':'bg-[url("src/assets/Signup-rafiki.png")]'} m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat `}>
+                            <div className={'m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat'} style={darkMode?{ backgroundImage: `url(${registerDark})` } : { backgroundImage: `url(${registerLight})` }}>
                             </div>
                         </div>
                     </div>

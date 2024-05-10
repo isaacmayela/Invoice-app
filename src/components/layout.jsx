@@ -81,11 +81,11 @@ function Layout() {
                 }
             } else if (error.request) {
                 setError(true)
-                setMessage("Erreur de connection veuillez réessayer !")
+                setMessage("Erreur de connexion. Veuiller raffraichir votre page !")
                 return Promise.reject(error);
             } else {
                 setError(true)
-                setMessage("Une erreur s'est produite lors de l'envoi de la requette !")
+                setMessage("Une erreur s'est produite lors de la communication avec le serveur !")
                 return Promise.reject(error);
             }
         }
