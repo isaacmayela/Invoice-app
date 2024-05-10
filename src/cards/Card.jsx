@@ -151,7 +151,7 @@ function CompanyCard({ pk, name, email, phone, adress, country, city, services, 
           <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
               <div class="flex justify-between items-center pt-5">
                 <Link
-                  to={`/company/${id_number}/details`}
+                  to={`/company/od1csc60vyrk4nt/details`}
                   className="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
                   Details
                   <svg className="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
