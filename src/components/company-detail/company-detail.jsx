@@ -18,7 +18,7 @@ function CompanyDetails() {
     const [company, setCompany] = useState({})
     const [isLoading, setIsLoading] = useState(false)
 
-    // console.log(clients);
+    // console.log(invoices);
 
     const [oenCompanyForm, setOpenCompanyForm] = useState(false)
 
@@ -29,7 +29,6 @@ function CompanyDetails() {
           .get(`company/informations/${id_number}`)
     
           .then(function (response) {
-            // console.log(response.data);
             setCompany({...response.data});
           })
     
@@ -44,7 +43,6 @@ function CompanyDetails() {
           })
     
           .catch(function (error) {
-            console.log(error);
         });
 
         axiosInstance
@@ -55,7 +53,6 @@ function CompanyDetails() {
           })
     
           .catch(function (error) {
-            console.log("errr");
         });
         setIsLoading(false)
     }, [oenCompanyForm])

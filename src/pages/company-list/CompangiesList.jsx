@@ -26,7 +26,7 @@ function CompagniesList() {
     });
   }, [oenCompanyForm])
 
-console.log(companies);
+// console.log(companies);
 
   return (
     <>        

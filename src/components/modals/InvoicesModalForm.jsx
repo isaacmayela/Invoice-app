@@ -54,10 +54,10 @@ function InvoicesModalForm({isDisplayed, setState, companies, setCompanies, cust
         setSelectedClient(client);
     };
 
-    const { register, control, handleSubmit, watch, setValue, getValues } = useForm({
+    const { register, control, handleSubmit, watch, setValue, getValues, reset } = useForm({
         defaultValues: {
           concern: '',
-          client: '',
+          customer: '',
           total: '',
           articles: [{ name: "", unity: "", quantity: "0", unit_price: "0.00", total: "", details: ""}]
         }
@@ -138,7 +138,7 @@ function InvoicesModalForm({isDisplayed, setState, companies, setCompanies, cust
         const clientName = selectedClient ? selectedClient.id_number : '';
         const formData = {
             ...data,
-            client: clientName,
+            customer: clientName,
             company: id_number
           };
         console.log(formData);
@@ -149,7 +149,7 @@ function InvoicesModalForm({isDisplayed, setState, companies, setCompanies, cust
         axiosInstance
         .post("company/add_invoices/", formData)
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
             SetSuccess(true)
             setError(false);
             // const newDatas = [...companies]
@@ -158,7 +158,7 @@ function InvoicesModalForm({isDisplayed, setState, companies, setCompanies, cust
 
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
             setError(true)
             SetSuccess(false)
         });

@@ -7,7 +7,7 @@ import { X } from "lucide-react"
 
 function WarningModal({state, setState, header, url}) {
 
-    console.log(url);
+    // console.log(url);
 
     const [isLoading, setIsloading] = useState(false)
 

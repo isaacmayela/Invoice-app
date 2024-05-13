@@ -3,10 +3,11 @@ import { useContext, useParams } from 'react'
 import ThemeContext from '../../contexts/themesContext'
 import imLogo from "../../assets/new-im-logo-white.png"
 import imLogoBlack from "../../assets/new-im-logo-black.png"
+import { useSelector } from 'react-redux'
 
 function DetailContainer() {
 
-    const{ darkMode, toggleTheme } = useContext(ThemeContext)
+    const darkMode = useSelector((state) => state.theme.value);
 
     return (
       <>        

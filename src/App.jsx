@@ -68,8 +68,8 @@ function App() {
                     <Route path='/profile' element={<Profile/>} />
                     <Route path='/company-list' element={<CompagniesList/>} />
                     <Route path='/company/:id_number/details' element={<Company/>} />
+                    <Route path='/invoice/:id_number' element={<InvoiceDetail/>}/>
                   </Route>
-                  <Route path='/invoice' element={<InvoiceDetail/>}/>
                 </Routes>
               </Router>
             </div>

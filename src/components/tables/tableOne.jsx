@@ -3,6 +3,7 @@ import ThreePointspinner from "../loaders/ThreePointSpinner";
 import { formaterDateISO } from "../../utils/usefulFeatures";
 import WarningModal from "../modals/WarningSupress";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const TableThree = ({invoiceList, isLoading}) => {
@@ -59,7 +60,7 @@ const TableThree = ({invoiceList, isLoading}) => {
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-gray-700">
                     <div className="flex items-center space-x-3.5">
-                      <button className="hover:text-[#7152e8] dark:hover:text-[#7152e8] text-gray-600 dark:text-gray-300">
+                      <Link to={`/invoice/${packageItem.id_number}`} className="hover:text-[#7152e8] dark:hover:text-[#7152e8] text-gray-600 dark:text-gray-300">
                         <svg
                           className="fill-current"
                           width="18"
@@ -77,7 +78,7 @@ const TableThree = ({invoiceList, isLoading}) => {
                             fill=""
                           />
                         </svg>
-                      </button>
+                      </Link>
                       <button className="hover:text-[#7152e8] dark:hover:text-[#7152e8] text-gray-600 dark:text-gray-300"
                         onClick={()=> setOpenWarning(true)}
                       >
